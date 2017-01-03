@@ -7,99 +7,68 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>order-core</artifactId>
+    <artifactId>order-utils</artifactId>
     <packaging>jar</packaging>
 
-    <name>order-core</name>
+    <name>order-utils</name>
+    <url>http://maven.apache.org</url>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>com.os</groupId>
-            <artifactId>order-utils</artifactId>
-            <version>${project.version}</version>
-        </dependency>
         <!-- Spring jar -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
+            <version>${spring.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-beans</artifactId>
+            <version>${spring.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
+            <version>${spring.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context-support</artifactId>
+            <version>${spring.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-jdbc</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-aop</artifactId>
+            <version>${spring.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-tx</artifactId>
+            <version>${spring.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-orm</artifactId>
+            <groupId>org.apache.derby</groupId>
+            <artifactId>derby</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-expression</artifactId>
+            <groupId>org.apache.derby</groupId>
+            <artifactId>derbynet</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-test</artifactId>
+            <groupId>org.apache.derby</groupId>
+            <artifactId>derbyclient</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-aspects</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.data</groupId>
-            <artifactId>spring-data-jpa</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>commons-fileupload</groupId>
-            <artifactId>commons-fileupload</artifactId>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
         </dependency>
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
         </dependency>
-        <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
-            <version>1.2.17</version>
-        </dependency>
-        <!-- slf4j -->
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>1.7.7</version>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-log4j12</artifactId>
-            <version>1.7.7</version>
-        </dependency>
-
-        <dependency>
-            <groupId>commons-configuration</groupId>
-            <artifactId>commons-configuration</artifactId>
-        </dependency>
     </dependencies>
+
 </project>
