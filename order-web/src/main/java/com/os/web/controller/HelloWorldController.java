@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/mvc")
 public class HelloWorldController {
 
-    @PatchMapping("/pages")
+    @RequestMapping("/hello")
     public String hello(){
         return "hello";
     }

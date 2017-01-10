@@ -33,7 +33,8 @@
 
     <servlet-mapping>
         <servlet-name>springmvc</servlet-name>
-        <url-pattern>/</url-pattern>
+        <!-- if url-pattern is / , the welcome-file-list will not work -->
+        <url-pattern>/order-web</url-pattern>
     </servlet-mapping>
 
 </web-app>
