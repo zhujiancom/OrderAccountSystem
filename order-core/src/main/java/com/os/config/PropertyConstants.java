@@ -16,4 +16,6 @@ public class PropertyConstants {
     public static final String GLOBAL_REFRESH_SECOND="framework.global.configuration.refresh.second";
     public static final String I18N_REFRESH_SECOND="framework.i18n.resources.refresh.second";
     public static final String PROPERTY_REFRESH_SECOND="framework.properties.resources.refresh.second";
+
+    public static final String SYSNAME = "system.name";
 }

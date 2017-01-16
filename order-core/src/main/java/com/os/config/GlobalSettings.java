@@ -10,6 +10,7 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 
 import java.net.URL;
+import java.util.List;
 import java.util.Locale;
 import java.util.NoSuchElementException;
 
@@ -92,6 +93,18 @@ public class GlobalSettings {
             logger.error(e);
         }
         return StringUtils.parseLocaleString(defaultLocale);
+    }
+
+    /**
+     * @Function 获取所有配置的资源文件整合到一起
+     * @return
+     * @author zj
+     * @Date 2014年8月7日
+     */
+    public String[] getPropertyResourcesNames(){
+        List<Object> list = configuration
+                .getList(PropertyConstants.PROPERTY_RESOURCES);
+        return list.toArray(new String[0]);
     }
 
 }
