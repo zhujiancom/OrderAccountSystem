@@ -13,7 +13,7 @@
     </context-param>
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>classpath*:spring/spring-*.xml</param-value>
+        <param-value>classpath*:spring/app-context-*.xml</param-value>
     </context-param>
 
     <listener>
@@ -22,19 +22,38 @@
 
     <!--configure the setting of springmvcDispatcherServlet and configure the mapping-->
     <servlet>
-        <servlet-name>springmvc</servlet-name>
+        <servlet-name>springMvc</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <init-param>
             <param-name>contextConfigLocation</param-name>
-            <param-value>classpath:spring/springmvc-servlet.xml</param-value>
+            <param-value>classpath:spring/spring-mvc-servlet.xml</param-value>
         </init-param>
          <load-on-startup>1</load-on-startup>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>springmvc</servlet-name>
+        <servlet-name>springMvc</servlet-name>
         <!-- if url-pattern is / , the welcome-file-list will not work -->
-        <url-pattern>/order-web</url-pattern>
+        <!--<url-pattern>/order-web</url-pattern>-->
+        <url-pattern>/</url-pattern>
     </servlet-mapping>
+
+    <!--  为了能够处理中文的post请求，再配置一个encodingFilter，以避免post请求中文出现乱码情况 -->
+    <filter>
+        <filter-name>encodingFilter</filter-name>
+        <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+        <init-param>
+            <param-name>forceEncoding</param-name>
+            <param-value>true</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>encodingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
 
 </web-app>

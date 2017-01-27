@@ -9,6 +9,14 @@
     <artifactId>order-web</artifactId>
     <packaging>war</packaging>
     <name>order-web Maven Webapp</name>
+
+    <!--<properties>-->
+        <!--<common-log-url>logs/common.log</common-log-url>-->
+        <!--<system-log-url>logs/system.log</system-log-url>-->
+        <!--<sql-log-url>logs/sql.log</sql-log-url>-->
+        <!--<root-priority>DEBUG</root-priority>-->
+    <!--</properties>-->
+
     <build>
         <finalName>order-web</finalName>
         <resources>
@@ -60,6 +68,7 @@
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
+            <!--<scope>provided</scope>-->
         </dependency>
     </dependencies>
 </project>

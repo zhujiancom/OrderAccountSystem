@@ -6,14 +6,14 @@
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
+        <module>order-utils</module>
+        <module>order-core</module>
         <module>data-processor</module>
         <module>order-account</module>
         <module>order-bill</module>
-        <module>order-core</module>
         <module>order-privilege</module>
-        <module>order-swing</module>
+        <!--<module>order-swing</module>-->
         <module>order-web</module>
-        <module>order-utils</module>
     </modules>
     <name>OrderAccountSystem</name>
 
@@ -24,6 +24,11 @@
         <jackson.version>1.9.9</jackson.version>
         <release-train>Hopper-SR6</release-train>
         <derby.version>10.12.1.1</derby.version>
+        <!-- Log configuration -->
+        <common-log-url>../logs/common.log</common-log-url>
+        <system-log-url>../logs/system.log</system-log-url>
+        <sql-log-url>../logs/sql.log</sql-log-url>
+        <root-priority>DEBUG</root-priority>
     </properties>
 
     <build>
