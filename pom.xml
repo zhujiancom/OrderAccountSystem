@@ -12,7 +12,7 @@
         <module>order-account</module>
         <module>order-bill</module>
         <module>order-privilege</module>
-        <!--<module>order-swing</module>-->
+        <module>order-swing</module>
         <module>order-web</module>
     </modules>
     <name>OrderAccountSystem</name>
@@ -24,10 +24,17 @@
         <jackson.version>1.9.9</jackson.version>
         <release-train>Hopper-SR6</release-train>
         <derby.version>10.12.1.1</derby.version>
+        <dozer.version>5.5.1</dozer.version>
+        <poi.version>3.14</poi.version>
+        <spring-boot.version>1.5.3.RELEASE</spring-boot.version>
+        <freemarker.version>2.3.27</freemarker.version>
         <!-- Log configuration -->
+        <os-log-url>../logs/os.log</os-log-url>
         <common-log-url>../logs/common.log</common-log-url>
         <system-log-url>../logs/system.log</system-log-url>
         <sql-log-url>../logs/sql.log</sql-log-url>
+        <spring-log-url>../logs/spring.log</spring-log-url>
+        <hibernate-log-url>../logs/hibernate.log</hibernate-log-url>
         <root-priority>DEBUG</root-priority>
     </properties>
 
@@ -45,9 +52,10 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.6.1</version>
                     <configuration>
-                        <source>1.7</source>
-                        <target>1.7</target>
+                        <source>1.8</source>
+                        <target>1.8</target>
                         <encoding>${project.build.sourceEncoding}</encoding>
                     </configuration>
                 </plugin>
@@ -62,8 +70,30 @@
                     <artifactId>maven-source-plugin</artifactId>
                     <version>2.4</version>
                 </plugin>
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                    <version>${spring-boot.version}</version>
+                </plugin>
             </plugins>
         </pluginManagement>
+        <plugins>
+            <!--<plugin>-->
+                <!--<groupId>org.springframework.boot</groupId>-->
+                <!--<artifactId>spring-boot-maven-plugin</artifactId>-->
+                <!--<version>${spring-boot.version}</version>-->
+            <!--</plugin>-->
+            <!--<plugin>-->
+                <!--<groupId>org.apache.maven.plugins</groupId>-->
+                <!--<artifactId>maven-compiler-plugin</artifactId>-->
+                <!--<version>3.6.1</version>-->
+                <!--<configuration>-->
+                    <!--<source>1.8</source>-->
+                    <!--<target>1.8</target>-->
+                    <!--<encoding>${project.build.sourceEncoding}</encoding>-->
+                <!--</configuration>-->
+            <!--</plugin>-->
+        </plugins>
     </build>
 
     <dependencies>
@@ -77,93 +107,13 @@
 
     <dependencyManagement>
         <dependencies>
-            <!-- Spring jar -->
             <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-core</artifactId>
-                <version>${spring.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-beans</artifactId>
-                <version>${spring.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-context</artifactId>
-                <version>${spring.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-context-support</artifactId>
-                <version>${spring.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-jdbc</artifactId>
-                <version>${spring.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-aop</artifactId>
-                <version>${spring.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-tx</artifactId>
-                <version>${spring.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-orm</artifactId>
-                <version>${spring.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-expression</artifactId>
-                <version>${spring.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-test</artifactId>
-                <version>${spring.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-aspects</artifactId>
-                <version>${spring.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.quartz-scheduler</groupId>
-                <artifactId>quartz</artifactId>
-                <version>2.2.1</version>
-            </dependency>
-            <!-- Spring data -->
-            <!--<dependency>-->
-            <!--<groupId>org.springframework.data</groupId>-->
-            <!--<artifactId>spring-data-jpa</artifactId>-->
-            <!--<version>1.8.1.RELEASE</version>-->
-            <!--</dependency>-->
-            <!--<dependency>-->
-            <!--<groupId>com.mysema.querydsl</groupId>-->
-            <!--<artifactId>querydsl-jpa</artifactId>-->
-            <!--<version>3.7.4</version>-->
-            <!--</dependency>-->
-            <!-- Spring mvc -->
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-webmvc</artifactId>
-                <version>${spring.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.springframework.data</groupId>
-                <artifactId>spring-data-releasetrain</artifactId>
-                <version>${release-train}</version>
-                <scope>import</scope>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
                 <type>pom</type>
+                <scope>import</scope>
             </dependency>
-
             <dependency>
                 <groupId>log4j</groupId>
                 <artifactId>log4j</artifactId>
@@ -289,23 +239,23 @@
             <dependency>
                 <groupId>net.sf.dozer</groupId>
                 <artifactId>dozer</artifactId>
-                <version>5.5.1</version>
+                <version>${dozer.version}</version>
             </dependency>
             <dependency>
                 <groupId>net.sf.dozer</groupId>
                 <artifactId>dozer-spring</artifactId>
-                <version>5.5.1</version>
+                <version>${dozer.version}</version>
             </dependency>
             <!-- POI service -->
             <dependency>
                 <groupId>org.apache.poi</groupId>
                 <artifactId>poi</artifactId>
-                <version>3.14</version>
+                <version>${poi.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.poi</groupId>
                 <artifactId>poi-ooxml</artifactId>
-                <version>3.14</version>
+                <version>${poi.version}</version>
             </dependency>
 
             <!-- JFreeChart -->
@@ -332,7 +282,7 @@
             <dependency>
                 <groupId>org.freemarker</groupId>
                 <artifactId>freemarker</artifactId>
-                <version>2.3.23</version>
+                <version>${freemarker.version}</version>
             </dependency>
 
             <!-- Jackson -->

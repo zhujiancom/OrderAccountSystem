@@ -26,9 +26,9 @@
         </filter>
     </appender>
 
-    <appender name="RECONCILIATIONLOG" class="org.apache.log4j.FileAppender">
+    <appender name="OSLOG" class="org.apache.log4j.FileAppender">
         <!-- 设置File参数：日志输出文件名 -->
-        <param name="File" value="${rci-log-url}" />
+        <param name="File" value="${os-log-url}" />
         <!-- 设置是否在重新启动服务时，在原有日志的基础添加新日志 -->
         <param name="Append" value="true" />
         <param name="ImmediateFlush" value="true" />
@@ -87,10 +87,10 @@
         </filter>
     </appender>
 
-    <!-- reconciliation Log -->
-    <logger name="com.rci" additivity="false">
+    <!-- order system Log -->
+    <logger name="com.os" additivity="false">
         <level value="${project-priority}"></level>
-        <appender-ref ref="RECONCILIATIONLOG" />
+        <appender-ref ref="OSLOG" />
         <appender-ref ref="CONSOLE" />
     </logger>
 

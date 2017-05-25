@@ -1,4 +1,4 @@
-package com.os.swing.exceptions;
+package com.os.exceptions;
 
 import org.springframework.core.NestedRuntimeException;
 
