@@ -4,8 +4,8 @@ import com.os.exceptions.ConfigLoaderException;
 import com.os.utils.StringUtils;
 import org.apache.commons.configuration.PropertiesConfiguration;
 import org.apache.commons.configuration.reloading.FileChangedReloadingStrategy;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 
@@ -18,7 +18,7 @@ import java.util.NoSuchElementException;
  * Created by Jian Zhu on 12/27/2016.
  */
 public class GlobalSettings {
-    private final Log logger = LogFactory.getLog(GlobalSettings.class);
+    private static Logger logger = LogManager.getLogger();
 
     private String defaultLocale = GlobalConstants.DEFAULT_LOCALE;
     private boolean reloadable = GlobalConstants.DEFAULT_CONFIGURATION_RELOADABLE;
@@ -38,20 +38,22 @@ public class GlobalSettings {
 
     private synchronized void loadGlobalSettings(){
         String propFileName = GlobalConstants.GLOBAL_CONFIG_FILE;
-        logger.info("Trying to load global configuration file: " + propFileName);
+        logger.info("Trying to load global configuration file {}: ", propFileName);
         try{
             Resource res = new ClassPathResource(propFileName);
             URL url = res.getURL();
             configuration = new PropertiesConfiguration(url);
             if(isReloadable()){
                 FileChangedReloadingStrategy strategy = new FileChangedReloadingStrategy();
-                logger.debug("---------- refresh interval : "+configuration.getInt(PropertyConstants.GLOBAL_REFRESH_SECOND));
+                if(logger.isDebugEnabled()){
+                    logger.debug("global configuration files refresh interval : {}s",configuration.getInt(PropertyConstants.GLOBAL_REFRESH_SECOND));
+                }
                 strategy.setRefreshDelay(1000 * configuration
                         .getInt(PropertyConstants.GLOBAL_REFRESH_SECOND));
                 configuration.setReloadingStrategy(strategy);
             }
             if(logger.isInfoEnabled()){
-                logger.info("Load " + propFileName + " from " + res.getURL());
+                logger.info("Load {} from {}", propFileName, res.getURL());
             }
         }catch (Exception ex){
             throw new ConfigLoaderException("Problem loading global properties from URL ["+ propFileName + "]",ex);

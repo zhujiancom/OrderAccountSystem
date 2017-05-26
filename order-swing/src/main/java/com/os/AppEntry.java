@@ -55,6 +55,7 @@ public class AppEntry {
 
     public static void main(String[] args){
         final ConfigurableApplicationContext ctx = new SpringApplicationBuilder(AppEntry.class).headless(false).run(args);
+//        final ConfigurableApplicationContext ctx = SpringApplication.run(AppEntry.class,args);
         EventQueue.invokeLater(() -> {
             if(isRunning()){
                 SpringApplication.exit(ctx,() -> -1);

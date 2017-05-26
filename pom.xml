@@ -18,6 +18,7 @@
     <name>OrderAccountSystem</name>
 
     <properties>
+        <java.version>1.8</java.version>
         <spring.version>4.3.4.RELEASE</spring.version>
         <hibernate.version>4.3.5.Final</hibernate.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -35,7 +36,7 @@
         <sql-log-url>../logs/sql.log</sql-log-url>
         <spring-log-url>../logs/spring.log</spring-log-url>
         <hibernate-log-url>../logs/hibernate.log</hibernate-log-url>
-        <root-priority>DEBUG</root-priority>
+        <root-level>INFO</root-level>
     </properties>
 
     <build>
