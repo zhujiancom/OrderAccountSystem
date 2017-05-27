@@ -86,9 +86,9 @@ public class OrderPageDisplayProvider {
             ((OrderItemTable)contentPane.getItemTable()).reflushTable(order.getItems());
 
             //显示入账金额
-            conclusionPane.setDailyPostAccountMap(page.getDailyPostAccountMap());
-            conclusionPane.setQueryDate(date);
-            conclusionPane.refreshUI();
+//            conclusionPane.setDailyPostAccountMap(page.getDailyPostAccountMap());
+//            conclusionPane.setQueryDate(date);
+//            conclusionPane.refreshUI();
             SwingUtilities.invokeLater(new Runnable() {
 
                 @Override

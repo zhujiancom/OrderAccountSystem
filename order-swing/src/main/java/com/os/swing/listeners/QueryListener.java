@@ -7,6 +7,7 @@ import com.os.swing.frames.OrderPageDisplayProvider;
 import com.os.swing.frames.dashboard.ConclusionPanel;
 import com.os.swing.frames.dashboard.ContentPanel;
 import com.os.swing.frames.dashboard.QueryFormPanel;
+import com.os.swing.handlers.InventoryWarningHandler;
 import com.os.swing.models.OrderItemTable;
 import com.os.utils.DateUtil;
 import org.apache.logging.log4j.LogManager;
@@ -102,5 +103,9 @@ public class QueryListener implements ActionListener,ListSelectionListener {
             }
         });
         loaderThread.start();
+    }
+
+    public void setConclusionPane(ConclusionPanel conclusionPane) {
+        this.conclusionPane = conclusionPane;
     }
 }

@@ -1,6 +1,7 @@
 package com.os.swing.components.switcher;
 
 import com.os.swing.components.buttons.ButtonFactory;
+import com.os.swing.frames.dashboard.CheckedoutOrderPanel;
 import com.os.swing.frames.dashboard.HangupOrderPanel;
 
 import javax.swing.JFrame;

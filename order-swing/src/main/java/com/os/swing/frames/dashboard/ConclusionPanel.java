@@ -7,4 +7,7 @@ import javax.swing.JPanel;
  * Created by jian zhu on 05/27/2017.
  */
 public class ConclusionPanel extends JPanel {
+    public void clearData(){
+
+    }
 }

@@ -22,4 +22,10 @@ public interface IMetaDataFacadeService {
      * @return
      */
     List<OrderItemVO> queryItemsByPayno(String day, String payno);
+
+    /**
+     * 查看是否有库存不足警告信息
+     * @return
+     */
+    boolean hasSellOffWarningInfo();
 }

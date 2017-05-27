@@ -136,4 +136,12 @@ public class QueryFormPanel extends JPanel implements ItemListener {
     public JXDatePicker getDatepicker() {
         return datepicker;
     }
+
+    public JButton getQueryBtn() {
+        return queryBtn;
+    }
+
+    public JButton getCleanBtn() {
+        return cleanBtn;
+    }
 }
