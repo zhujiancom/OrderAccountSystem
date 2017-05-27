@@ -196,12 +196,12 @@ public final class BusinessEnums {
 		DAILY_ALL
 	}
 	
-	public static enum PaymodeCode{
+	public enum PaymodeCode{
 		OFFLINE_FREE("OFFLINE_FREE"),ONLINE_FREE("ONLINE_FREE"),	//线下现金免单,线上免单
 		UNKNOW("");							//未知支付方式
 		
 		private String paymodeno;
-		private PaymodeCode(String paymodeno){
+		PaymodeCode(String paymodeno){
 			this.paymodeno = paymodeno;
 		}
 		

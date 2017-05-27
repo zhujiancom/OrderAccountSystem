@@ -35,10 +35,6 @@ public class SwitcherElement extends JButton{
 	
 	private boolean isSelected;
 	
-	private int width;
-	
-	private int height;
-	
 	private int index;
 	
 	private ActionListener listener;
@@ -63,15 +59,13 @@ public class SwitcherElement extends JButton{
 		super(name);
 		this.name = name;
 		this.isSelected = isSelected;
-		this.width = width;
-		this.height = height;
 		this.index = index;
-		initComponent();
-	}
-
-	private void initComponent() {
 		setPreferredSize(new Dimension(width, height));
 	}
+
+//	private void initComponent() {
+//		setPreferredSize(new Dimension(width, height));
+//	}
 	
 	@Override
 	protected void paintComponent(Graphics paramGraphics) {

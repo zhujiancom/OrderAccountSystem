@@ -1,7 +1,11 @@
 package com.os.swing.listeners;
 
+import com.os.swing.frames.RootFrame;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.net.URL;
@@ -9,7 +13,7 @@ import java.net.URL;
 /**
  * Created by jian zhu on 1-16-17.
  */
-public class FrameListener extends MouseAdapter {
+public class FrameListener extends MouseAdapter{
     private static final int ACTION_MOVE = 0;
     private static final int ACTION_SE_RESIZE = 1;
     private static final int ACTION_E_RESIZE = 2;
@@ -81,18 +85,7 @@ public class FrameListener extends MouseAdapter {
     @Override
     public void mouseClicked(MouseEvent e) {
         if(e.getClickCount() == 2){
-            GraphicsDevice device = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
-            if(device.getFullScreenWindow() == null){
-                device.setFullScreenWindow(frame);
-                URL btnUrl = this.getClass().getClassLoader().getResource("skin/gray/images/16x16/normalize_2.png");
-                maximizeBtn.setIcon(new ImageIcon(btnUrl));
-                maximizeBtn.setToolTipText("向下还原");
-            }else{
-                device.setFullScreenWindow(null);
-                URL btnUrl = this.getClass().getClassLoader().getResource("skin/gray/images/16x16/maximize_2.png");
-                maximizeBtn.setIcon(new ImageIcon(btnUrl));
-                maximizeBtn.setToolTipText("最大化");
-            }
+            ((RootFrame)frame).doMaximizeWindow(maximizeBtn);
         }
     }
 

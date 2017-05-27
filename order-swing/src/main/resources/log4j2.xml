@@ -86,7 +86,7 @@
             <!--<AppenderRef ref="OS_DEMO_RollingFile_LOG"/>-->
         <!--</Logger>-->
 
-        <Logger name="com.os" level="debug" additivity="true">
+        <Logger name="com.os" level="debug" additivity="false">
             <AppenderRef ref="Console-Appender"/>
             <AppenderRef ref="OS_RollingFile_LOG"/>
         </Logger>

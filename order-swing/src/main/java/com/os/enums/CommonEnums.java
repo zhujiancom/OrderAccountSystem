@@ -21,12 +21,4 @@ public final class CommonEnums {
 			return Y.equals(yn);
 		}
 	}
-	
-	public static enum CRUDType {
-		CREATE,READ,UPDATE,DELTE
-	}
-	
-//	public static enum Symbol{
-//		N,P;
-//	}
 }
