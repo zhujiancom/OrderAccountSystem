@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mappings xmlns="http://dozer.sourceforge.net" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://dozer.sourceforge.net
+http://dozer.sourceforge.net/schema/beanmapping.xsd">
+	<mapping map-null="false" map-empty-string="false">
+		<class-a>com.os.order.beans.entities.OrderEntity</class-a>
+		<class-b>com.os.bean.vos.OrderVO</class-b>
+		<field>
+			<a>oid</a>
+			<b>orderId</b>
+		</field>
+		<field>
+			<a>originPrice</a>
+			<b>originAmount</b>
+		</field>
+		<field>
+			<a>realAmount</a>
+			<b>actualAmount</b>
+		</field>
+		<field custom-converter-id="tableConvert">
+			<a>tableNo</a>
+			<b>tableName</b>
+		</field>
+		<field custom-converter-id="paymodeConvert">
+			<a>paymodes</a>
+			<b>paymodecodes</b>
+		</field>
+	</mapping>
+</mappings>

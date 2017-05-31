@@ -10,7 +10,7 @@ import com.os.swing.models.OrderItemTable;
 import com.os.utils.DateUtil;
 import com.os.utils.PropertyUtils;
 import com.os.utils.SpringUtils;
-import com.os.vos.HangupTabelInfoVO;
+import com.os.bean.vos.HangupTabelInfoVO;
 import org.springframework.util.CollectionUtils;
 
 import javax.swing.BorderFactory;

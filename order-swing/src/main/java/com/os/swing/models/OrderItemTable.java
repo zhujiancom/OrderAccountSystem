@@ -2,7 +2,7 @@ package com.os.swing.models;
 
 import com.os.swing.renderers.AbstractLineColorMarkRenderer;
 import com.os.utils.DateUtil;
-import com.os.vos.OrderItemVO;
+import com.os.bean.vos.OrderItemVO;
 import org.springframework.util.CollectionUtils;
 
 import javax.swing.JTable;

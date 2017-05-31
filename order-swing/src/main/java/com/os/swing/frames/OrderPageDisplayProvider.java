@@ -2,7 +2,6 @@ package com.os.swing.frames;
 
 import com.os.exceptions.ExceptionConstant;
 import com.os.exceptions.ExceptionManagementFactory;
-import com.os.exceptions.ServiceException;
 import com.os.modelview.OrderPage;
 import com.os.swing.components.MaskDialog;
 import com.os.swing.frames.dashboard.ConclusionPanel;
@@ -11,14 +10,13 @@ import com.os.swing.frames.dashboard.QueryFormPanel;
 import com.os.swing.models.OrderItemTable;
 import com.os.swing.models.OrderTable;
 import com.os.utils.StringUtils;
-import com.os.vos.OrderVO;
+import com.os.bean.vos.OrderVO;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.util.CollectionUtils;
 
 import javax.swing.SwingUtilities;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
@@ -47,7 +45,7 @@ public class OrderPageDisplayProvider {
 
             @Override
             public void run() {
-                dialog.loading("Order Data is loading, Please waiting...");
+                dialog.loading("OrderEntity Data is loading, Please waiting...");
             }
         });
         OrderPage page = new OrderPage();
@@ -55,8 +53,8 @@ public class OrderPageDisplayProvider {
             page = callback.doLoad();
         }catch(Exception e){
             dialog.dispose();
-            logger.error("Order data loading error.",e);
-            ExceptionManagementFactory.throwServiceException(ExceptionConstant.SERVICE.DATA_ERROR,"Order data loading occurs Error.");
+            logger.error("OrderEntity data loading error.",e);
+            ExceptionManagementFactory.throwServiceException(ExceptionConstant.SERVICE.DATA_ERROR,"OrderEntity data loading occurs Error.");
         }
         final Date date = page.getOrderDate();
         OrderTable.OrderTableModel otm = (OrderTable.OrderTableModel) contentPane.getMainTable().getModel();
@@ -65,6 +63,7 @@ public class OrderPageDisplayProvider {
         List<OrderVO> ordervos = new ArrayList<OrderVO>();
         final StringBuffer warningInfo = new StringBuffer();
         Map<String,OrderVO> orderMapping = page.getOrderMapping();
+
         if(!CollectionUtils.isEmpty(orderMapping)){
             int count = 0;
             for(Iterator<Map.Entry<String,OrderVO>> it = orderMapping.entrySet().iterator(); it.hasNext();){
@@ -79,7 +78,7 @@ public class OrderPageDisplayProvider {
                 }
                 ordervos.add(order);
             }
-            Collections.sort(ordervos);
+            ordervos.stream().sorted();
 
             contentPane.getMainTable().refreshTable(ordervos);
             OrderVO order = otm.getOrderAt(0);
@@ -89,27 +88,18 @@ public class OrderPageDisplayProvider {
 //            conclusionPane.setDailyPostAccountMap(page.getDailyPostAccountMap());
 //            conclusionPane.setQueryDate(date);
 //            conclusionPane.refreshUI();
-            SwingUtilities.invokeLater(new Runnable() {
-
-                @Override
-                public void run() {
-                    queryPane.hideInfo();
-                    queryPane.getDatepicker().setDate(date);
-                    contentPane.getTextArea().setText(warningInfo.toString());
-                    dialog.done("订单加载完成！");
-                }
+            SwingUtilities.invokeLater(() -> {
+                queryPane.hideInfo();
+                queryPane.getDatepicker().setDate(date);
+                contentPane.getTextArea().setText(warningInfo.toString());
+                dialog.done("订单加载完成！");
             });
         }else{
             otm.setRowCount(0);
             ottm.setRowCount(0);
-            SwingUtilities.invokeLater(new Runnable() {
-
-                @Override
-                public void run() {
-                    conclusionPane.clearData();
-                    dialog.error("没有订单数据！");
-                }
-            });
+            SwingUtilities.invokeLater(() -> {
+                conclusionPane.clearData();
+                dialog.error("没有订单数据！");});
         }
     }
 

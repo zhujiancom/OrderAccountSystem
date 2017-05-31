@@ -29,23 +29,13 @@ public class CleanListener implements ActionListener {
         final String time = DateUtil.date2Str(queryDate, "yyyyMMdd");
         new Thread(() -> {
             try{
-                SwingUtilities.invokeLater(new Runnable(){
-
-                    @Override
-                    public void run() {
-                        queryPanel.displayInfoLoading("正在清除 "+ time +" 数据！");
-                    }
-
+                SwingUtilities.invokeLater(() -> {
+                    queryPanel.displayInfoLoading("正在清除 "+ time +" 数据！");
                 });
                 conclusionPane.clearData();
                 contentPane.clearData(time);
-                SwingUtilities.invokeLater(new Runnable(){
-
-                    @Override
-                    public void run() {
-                        queryPanel.displayInfoDone("日期："+time+" 数据清除成功！");
-                    }
-
+                SwingUtilities.invokeLater(() -> {
+                    queryPanel.displayInfoDone("日期："+time+" 数据清除成功！");
                 });
             }catch(ServiceException se){
                 JOptionPane.showMessageDialog(null, new JLabel("<html><font color='red'>"+se.getMessage()+"</font></html>"));

@@ -14,6 +14,8 @@
         <module>order-privilege</module>
         <module>order-swing</module>
         <module>order-web</module>
+        <module>order-db</module>
+        <module>order-order</module>
     </modules>
     <name>OrderAccountSystem</name>
 

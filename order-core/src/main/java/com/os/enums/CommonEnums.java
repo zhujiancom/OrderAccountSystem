@@ -21,4 +21,8 @@ public final class CommonEnums {
 			return Y.equals(yn);
 		}
 	}
+
+	public static enum ActivityStatus{
+		ACTIVE,INACTIVE
+	}
 }

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.os.vos;
+package com.os.bean.vos;
 
 import java.io.Serializable;
 import java.math.BigDecimal;

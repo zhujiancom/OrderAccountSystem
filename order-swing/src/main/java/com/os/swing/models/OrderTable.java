@@ -3,7 +3,7 @@ package com.os.swing.models;
 import com.os.enums.CommonEnums;
 import com.os.swing.renderers.AbstractLineColorMarkRenderer;
 import com.os.utils.DateUtil;
-import com.os.vos.OrderVO;
+import com.os.bean.vos.OrderVO;
 import org.springframework.util.CollectionUtils;
 
 import javax.swing.JTable;

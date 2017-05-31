@@ -137,30 +137,18 @@ public class RootFrame extends JFrame implements InitializingBean{
 //        costControl.addActionListener(mhandler.doCostControlAction());
 
         //系统退出
-        closeBtn.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                SpringApplication.exit(context,() -> -1);
-                WindowEvent we = new WindowEvent(frame,WindowEvent.WINDOW_CLOSING);
-                frame.dispatchEvent(we);
-            }
+        closeBtn.addActionListener((e) -> {
+            SpringApplication.exit(context,() -> -1);
+            WindowEvent we = new WindowEvent(frame,WindowEvent.WINDOW_CLOSING);
+            frame.dispatchEvent(we);
         });
         //窗口最大化
-        maximizeBtn.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                doMaximizeWindow(maximizeBtn);
-            }
+        maximizeBtn.addActionListener((e) -> {
+            doMaximizeWindow(maximizeBtn);
         });
         //窗口最小化
-        minimizeBtn.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                frame.setExtendedState(JFrame.ICONIFIED);
-            }
+        minimizeBtn.addActionListener((e) -> {
+            frame.setExtendedState(JFrame.ICONIFIED);
         });
 
         //库存管理

@@ -1,6 +1,6 @@
 package com.os.modelview;
 
-import com.os.vos.OrderVO;
+import com.os.bean.vos.OrderVO;
 import org.springframework.util.CollectionUtils;
 
 import java.io.Serializable;

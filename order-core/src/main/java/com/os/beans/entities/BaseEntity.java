@@ -1,11 +1,11 @@
-package com.os.bean.entity;
+package com.os.beans.entities;
 
 import javax.persistence.MappedSuperclass;
 import javax.persistence.Transient;
 import javax.persistence.Version;
 import java.io.Serializable;
 
-//@MappedSuperclass
+@MappedSuperclass
 public abstract class BaseEntity implements Serializable, Cloneable{
 
 	/**
@@ -15,9 +15,6 @@ public abstract class BaseEntity implements Serializable, Cloneable{
 	
 	private Integer version;
 
-	@Transient
-	public abstract Serializable getId();
-
 	@Version
 	public Integer getVersion(){
 		return version;
@@ -26,9 +23,4 @@ public abstract class BaseEntity implements Serializable, Cloneable{
 	public void setVersion(Integer version){
 		this.version = version;
 	};
-
-	@Override
-	public Object clone() throws CloneNotSupportedException{
-		return super.clone();
-	}
 }

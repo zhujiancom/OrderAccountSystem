@@ -1,4 +1,4 @@
-package com.os.vos;
+package com.os.bean.vos;
 
 import com.os.utils.StringUtils;
 import org.apache.commons.lang3.builder.EqualsBuilder;

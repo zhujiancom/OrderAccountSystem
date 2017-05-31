@@ -1,5 +1,6 @@
 package com.os;
 
+import com.os.derby.DerbyServer;
 import com.os.swing.frames.RootFrame;
 import com.os.utils.PropertyUtils;
 import org.apache.logging.log4j.LogManager;
@@ -33,6 +34,10 @@ public class AppEntry {
             logger.error("Application is Running!");
             System.exit(-1);
         }
+
+        DerbyServer dbServer = new DerbyServer.DerbyServerBuilder().propertiesFile("swing-derby.properties").build();
+        dbServer.start();
+
         final ConfigurableApplicationContext ctx = new SpringApplicationBuilder(AppEntry.class)
                                                     .bannerMode(Banner.Mode.OFF)
                                                     .headless(false).run(args);

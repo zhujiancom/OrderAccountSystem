@@ -7,11 +7,10 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>order-account</artifactId>
+    <artifactId>order-db</artifactId>
     <packaging>jar</packaging>
 
-    <name>order-account</name>
-
+    <name>order-db</name>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
@@ -21,6 +20,14 @@
             <groupId>com.os</groupId>
             <artifactId>order-core</artifactId>
             <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.derby</groupId>
+            <artifactId>derbynet</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.derby</groupId>
+            <artifactId>derbyclient</artifactId>
         </dependency>
     </dependencies>
 </project>

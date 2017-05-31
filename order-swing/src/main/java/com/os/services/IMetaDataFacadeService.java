@@ -1,7 +1,7 @@
 package com.os.services;
 
-import com.os.vos.HangupTabelInfoVO;
-import com.os.vos.OrderItemVO;
+import com.os.bean.vos.HangupTabelInfoVO;
+import com.os.bean.vos.OrderItemVO;
 
 import java.util.List;
 
