@@ -1,5 +1,6 @@
 package com.os;
 
+import com.os.datasource.CustomDataSourceAutoConfiguration;
 import com.os.derby.DerbyServer;
 import com.os.swing.frames.RootFrame;
 import com.os.utils.PropertyUtils;
@@ -13,6 +14,7 @@ import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import javax.swing.JFrame;
@@ -28,8 +30,6 @@ import java.nio.channels.FileLock;
  */
 @Configuration
 @EnableAutoConfiguration(exclude = {DataSourceAutoConfiguration.class})
-//@EnableAutoConfiguration
-@EnableJpaRepositories
 @EnableCaching
 @ComponentScan(basePackages = {"com.os"})
 public class AppEntry {

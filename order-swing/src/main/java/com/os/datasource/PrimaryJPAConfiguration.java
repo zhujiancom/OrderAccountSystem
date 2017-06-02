@@ -29,7 +29,7 @@ import java.util.Map;
 @EnableTransactionManagement
 @EnableConfigurationProperties(JpaProperties.class)
 @EnableJpaRepositories(
-//        entityManagerFactoryRef = "entityManagerFactory",
+        entityManagerFactoryRef = "entityManagerFactoryPrimary",
         transactionManagerRef = "transactionManagerPrimary",
         basePackages = {"com.os.order.repository"}
 )
@@ -41,13 +41,13 @@ public class PrimaryJPAConfiguration {
 
     @Primary
     @Bean(name="entityManagerPrimary")
-    public EntityManager entityManager(@Qualifier("entityManagerFactory") EntityManagerFactory entityManagerFactory){
+    public EntityManager entityManager(@Qualifier("entityManagerFactoryPrimary") EntityManagerFactory entityManagerFactory){
         return entityManagerFactory.createEntityManager();
     }
 
     @PersistenceContext(unitName = "primaryPersistenceUnit")
-    @Bean(name="entityManagerFactory")
-//    @Qualifier("entityManagerFactory")
+    @Bean
+    @Qualifier("entityManagerFactoryPrimary")
     @Primary
     public LocalContainerEntityManagerFactoryBean entityManagerFactoryPrimary(EntityManagerFactoryBuilder builder){
         return builder.dataSource(primaryDataSource)
@@ -66,7 +66,7 @@ public class PrimaryJPAConfiguration {
 
     @Primary
     @Bean(name = "transactionManagerPrimary")
-    public PlatformTransactionManager transactionManagerPrimary(@Qualifier("entityManagerFactory") EntityManagerFactory entityManagerFactory) {
+    public PlatformTransactionManager transactionManagerPrimary(@Qualifier("entityManagerFactoryPrimary") EntityManagerFactory entityManagerFactory) {
         return new JpaTransactionManager(entityManagerFactory);
     }
 }

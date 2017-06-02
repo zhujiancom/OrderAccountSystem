@@ -49,6 +49,6 @@ public class DataSourceConfigTest {
         DishEntity dishEntity = dishRepository.findOne(201L);
         dishEntity.setDishPrice(new BigDecimal(7));
         dishRepository.saveAndFlush(dishEntity);
-        TimeUnit.MINUTES.sleep(10);
+//        TimeUnit.MINUTES.sleep(10);
     }
 }

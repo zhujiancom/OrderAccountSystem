@@ -1,12 +1,9 @@
 package com.os.datasource;
 
-import com.jolbox.bonecp.BoneCPDataSource;
 import org.apache.derby.jdbc.EmbeddedConnectionPoolDataSource;
-import org.apache.derby.jdbc.EmbeddedDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceBuilder;
-import org.springframework.boot.autoconfigure.orm.jpa.JpaProperties;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -23,8 +20,7 @@ import java.io.File;
 @Configuration
 @EnableConfigurationProperties({
         CustomDataSourceAutoConfiguration.SqlServerDSProperties.class,
-        CustomDataSourceAutoConfiguration.DerbyDSProperties.class,
-        JpaProperties.class
+        CustomDataSourceAutoConfiguration.DerbyDSProperties.class
 })
 public class CustomDataSourceAutoConfiguration {
     @Autowired
@@ -43,7 +39,6 @@ public class CustomDataSourceAutoConfiguration {
     @Bean(name="derbyDataSource")
     @Qualifier("primaryDS")
     public DataSource derbyDataSource(){
-//        return crateDataSource(derbyDSProperties);
         EmbeddedConnectionPoolDataSource pooled = new EmbeddedConnectionPoolDataSource();
         pooled.setUser(derbyDSProperties.getUsername());
         pooled.setPassword(derbyDSProperties.getPassword());
