@@ -2,9 +2,6 @@ package com.os.beans.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import java.math.BigDecimal;
@@ -15,11 +12,6 @@ import java.math.BigDecimal;
 @Entity
 @Table(name="BUS_TB_ACCOUNT")
 public class AccountEntity extends BaseEntity{
-    @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY) // MYSQL ID generator
-    @Column(name="ID", nullable=false,updatable=false)
-    private Long id;
-
     /* 账户编号 */
     @Column(name="ACC_NO")
     private String accNo;
@@ -50,14 +42,6 @@ public class AccountEntity extends BaseEntity{
 
     @Column(name="DESCRIPTION")
     private String description;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getAccNo() {
         return accNo;

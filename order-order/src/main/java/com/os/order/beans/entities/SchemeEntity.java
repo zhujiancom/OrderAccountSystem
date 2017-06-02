@@ -7,9 +7,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
@@ -18,7 +15,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import java.math.BigDecimal;
 import java.util.Date;
-import java.util.List;
+import java.util.Set;
 
 /**
  * Created by jian zhu on 05/31/2017.
@@ -28,11 +25,6 @@ import java.util.List;
 @Entity
 @Table(name = "BUS_TB_SCHEME")
 public class SchemeEntity extends AccessoryEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID", nullable = false, updatable = false)
-    private Long id;
-
     /* 活动编号 */
     @Column(name="SCHEME_NO")
     private String schemeNo;
@@ -88,15 +80,7 @@ public class SchemeEntity extends AccessoryEntity {
     private BigDecimal beverageAmount = BigDecimal.ZERO;
 
     @ManyToMany(mappedBy="schemes")
-    private List<OrderEntity> orders;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
+    private Set<OrderEntity> orders;
 
     public String getSchemeNo() {
         return schemeNo;
@@ -202,11 +186,11 @@ public class SchemeEntity extends AccessoryEntity {
         this.beverageAmount = beverageAmount;
     }
 
-    public List<OrderEntity> getOrders() {
+    public Set<OrderEntity> getOrders() {
         return orders;
     }
 
-    public void setOrders(List<OrderEntity> orders) {
+    public void setOrders(Set<OrderEntity> orders) {
         this.orders = orders;
     }
 }

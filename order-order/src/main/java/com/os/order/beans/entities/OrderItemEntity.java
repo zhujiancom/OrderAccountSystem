@@ -6,9 +6,6 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -20,11 +17,6 @@ import java.math.BigDecimal;
 @Entity
 @Table(name="BUS_TB_ORDER_ITEM")
 public class OrderItemEntity extends BaseEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID", nullable = false, updatable = false)
-    private long id;
-
     /* 订单编号 */
     @Column(name = "BILL_NO")
     private String billNo;
@@ -81,14 +73,6 @@ public class OrderItemEntity extends BaseEntity {
     @ManyToOne(cascade = CascadeType.ALL,fetch= FetchType.EAGER)
     @JoinColumn(name = "ORDER_ID")
     private OrderEntity order;
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
 
     public String getBillNo() {
         return billNo;

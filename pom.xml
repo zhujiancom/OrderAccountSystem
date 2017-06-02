@@ -37,7 +37,7 @@
         <profile>
             <id>dev</id>
             <properties>
-                <root-level>info</root-level>
+                <root-level>trace</root-level>
             </properties>
             <activation>
                 <activeByDefault>true</activeByDefault>
@@ -205,26 +205,26 @@
             </dependency>
 
             <!-- Hibernate4 && JPA support-->
-            <dependency>
-                <groupId>org.hibernate</groupId>
-                <artifactId>hibernate-core</artifactId>
-                <version>${hibernate.version}</version>
-                <exclusions>
-                    <exclusion>
-                        <artifactId>slf4j-api</artifactId>
-                        <groupId>org.slf4j</groupId>
-                    </exclusion>
-                    <exclusion>
-                        <artifactId>commons-collections</artifactId>
-                        <groupId>commons-collections</groupId>
-                    </exclusion>
-                </exclusions>
-            </dependency>
-            <dependency>
-                <groupId>org.hibernate</groupId>
-                <artifactId>hibernate-entitymanager</artifactId>
-                <version>${hibernate.version}</version>
-            </dependency>
+            <!--<dependency>-->
+                <!--<groupId>org.hibernate</groupId>-->
+                <!--<artifactId>hibernate-core</artifactId>-->
+                <!--<version>${hibernate.version}</version>-->
+                <!--<exclusions>-->
+                    <!--<exclusion>-->
+                        <!--<artifactId>slf4j-api</artifactId>-->
+                        <!--<groupId>org.slf4j</groupId>-->
+                    <!--</exclusion>-->
+                    <!--<exclusion>-->
+                        <!--<artifactId>commons-collections</artifactId>-->
+                        <!--<groupId>commons-collections</groupId>-->
+                    <!--</exclusion>-->
+                <!--</exclusions>-->
+            <!--</dependency>-->
+            <!--<dependency>-->
+                <!--<groupId>org.hibernate</groupId>-->
+                <!--<artifactId>hibernate-entitymanager</artifactId>-->
+                <!--<version>${hibernate.version}</version>-->
+            <!--</dependency>-->
 
 
             <!-- AspectJ -->

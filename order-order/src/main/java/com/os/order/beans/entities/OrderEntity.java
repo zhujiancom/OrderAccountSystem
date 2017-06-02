@@ -5,10 +5,6 @@ import com.os.beans.entities.BaseEntity;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
@@ -16,7 +12,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.math.BigDecimal;
 import java.util.Date;
-import java.util.List;
+import java.util.Set;
 
 /**
  * Created by jian zhu on 05/31/2017.
@@ -24,11 +20,6 @@ import java.util.List;
 @Entity
 @Table(name="BUS_TB_ORDER")
 public class OrderEntity extends BaseEntity {
-    @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY) // MYSQL ID generator
-    @Column(name="ID", nullable=false,updatable=false)
-    private Long id;
-
     /* 订单编号   */
     @Column(name="ORDER_NO")
     private String orderNo;
@@ -70,8 +61,8 @@ public class OrderEntity extends BaseEntity {
     private BigDecimal realAmount;
 
     /* 具体菜品明细  */
-    @OneToMany(cascade= CascadeType.ALL,fetch= FetchType.EAGER,mappedBy="order")
-    private List<OrderItemEntity> items;
+    @OneToMany(cascade= CascadeType.ALL,mappedBy="order")
+    private Set<OrderItemEntity> items;
 
     /* 该单有异常 */
     @Column(name="UNUSUAL_FLAG")
@@ -81,18 +72,10 @@ public class OrderEntity extends BaseEntity {
     @Column(name="NO_DISCOUNT_AMOUNT")
     private BigDecimal noDiscountAmount;
 
-    @ManyToMany(fetch=FetchType.EAGER)
+    @ManyToMany
     @JoinTable(name="ORDER_SCHEME_REF",joinColumns={@JoinColumn(name="ORDER_ID",referencedColumnName="id")}
             ,inverseJoinColumns={@JoinColumn(name="SCHEME_ID",referencedColumnName="id")})
-    private List<SchemeEntity> schemes;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
+    private Set<SchemeEntity> schemes;
 
     public String getOrderNo() {
         return orderNo;
@@ -166,11 +149,11 @@ public class OrderEntity extends BaseEntity {
         this.realAmount = realAmount;
     }
 
-    public List<OrderItemEntity> getItems() {
+    public Set<OrderItemEntity> getItems() {
         return items;
     }
 
-    public void setItems(List<OrderItemEntity> items) {
+    public void setItems(Set<OrderItemEntity> items) {
         this.items = items;
     }
 
@@ -198,11 +181,11 @@ public class OrderEntity extends BaseEntity {
         this.unusualFlag = unusualFlag;
     }
 
-    public List<SchemeEntity> getSchemes() {
+    public Set<SchemeEntity> getSchemes() {
         return schemes;
     }
 
-    public void setSchemes(List<SchemeEntity> schemes) {
+    public void setSchemes(Set<SchemeEntity> schemes) {
         this.schemes = schemes;
     }
 }

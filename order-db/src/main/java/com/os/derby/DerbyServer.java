@@ -63,7 +63,9 @@ public class DerbyServer {
 
     public void start(){
         try {
-            serverControl.start(writer);
+            if(!testForConnection()){
+                serverControl.start(writer);
+            }
         } catch (Exception e) {
             logger.error("startup derby server failed", e);
             writer.println("startup derby server failed - "+e.getMessage());
@@ -79,12 +81,14 @@ public class DerbyServer {
         }
     }
 
-    public void testForConnection() throws Exception{
+    public boolean testForConnection() throws Exception{
         try {
             serverControl.ping();
+            return true;
         } catch (Exception e) {
-            writer.println("cannot connect to derby server! - "+e.getMessage());
-            throw e;
+            writer.println("attempt to connect to derby server failed, maybe attempt to start derby server. - "+e.getMessage());
+            logger.warn(e);
+            return false;
         }
     }
 
@@ -151,7 +155,7 @@ public class DerbyServer {
                 this.host = p.getProperty(DB_SERVER_URL);
                 this.port = Integer.valueOf(p.getProperty(DB_SERVER_PORT));
                 System.setProperty(DB_SYSTEM_HOME, homeName);
-                File destFile = new File(System.getProperty("user.dir")+File.separator+homeName+File.separator+propertiesFile);
+                File destFile = new File(System.getProperty("user.dir")+File.separator+homeName+File.separator+"derby.properties");
                 FileUtils.forceMkdir(destFile.getParentFile());
                 p.store(new FileOutputStream(destFile), "auto generate by application as the configuration of derby system-wide properties.");
             }

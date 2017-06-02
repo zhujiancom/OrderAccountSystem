@@ -4,9 +4,6 @@ import com.os.beans.entities.BaseEntity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
@@ -15,24 +12,11 @@ import javax.persistence.Table;
 @Entity
 @Table(name="BUS_TB_ACCOUNT_ORDER_REF")
 public class AccountOrderRefEntity extends BaseEntity{
-    @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY) // MYSQL ID generator
-    @Column(name="ID", nullable=false,updatable=false)
-    private long id;
-
     @Column(name="ACCOUNT_ID")
     private long accountId;
 
     @Column(name="ORDER_ID")
     private long orderId;
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
 
     public long getAccountId() {
         return accountId;

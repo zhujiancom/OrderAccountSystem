@@ -7,10 +7,13 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.boot.Banner;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -24,14 +27,22 @@ import java.nio.channels.FileLock;
  * Created by jian zhu on 1-16-17.
  */
 @Configuration
-@EnableAutoConfiguration
+@EnableAutoConfiguration(exclude = {DataSourceAutoConfiguration.class})
+//@EnableAutoConfiguration
+@EnableJpaRepositories
+@EnableCaching
 @ComponentScan(basePackages = {"com.os"})
 public class AppEntry {
     private static final Logger logger = LogManager.getLogger();
 
-    public static void main(String[] args){
+    public static RandomAccessFile fis;
+
+    public static void main(String[] args) throws Exception{
         if(isRunning()){
             logger.error("Application is Running!");
+            if(fis != null){
+                fis.close();
+            }
             System.exit(-1);
         }
 
@@ -73,7 +84,7 @@ public class AppEntry {
         String applicationName= PropertyUtils.getStringValue("application.name");
         try{
             String lockFileName = path+applicationName+".lock";
-            RandomAccessFile fis = new RandomAccessFile(lockFileName,"rw");
+            fis = new RandomAccessFile(lockFileName,"rw");
             FileChannel lockfc = fis.getChannel();
             FileLock flock = lockfc.tryLock();
             if(flock == null) {

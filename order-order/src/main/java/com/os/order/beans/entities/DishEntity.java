@@ -7,9 +7,6 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -33,11 +30,6 @@ import java.math.BigDecimal;
 @Entity
 @Table(name="BUS_TB_DISH")
 public class DishEntity extends BaseEntity {
-    @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY) // MYSQL ID generator
-    @Column(name="DISH_ID", nullable=false,updatable=false)
-    private Long id;
-
     /* 菜品编号 */
     @Column(name="DISH_NO")
     private String dishNo;
@@ -82,14 +74,6 @@ public class DishEntity extends BaseEntity {
     /* 是否是外送费 */
     @Column(name="TAKEOUT_FEE_FLAG")
     private Boolean takeoutFeeFlag;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getDishNo() {
         return dishNo;

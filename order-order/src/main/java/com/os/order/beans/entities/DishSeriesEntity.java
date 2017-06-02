@@ -4,9 +4,6 @@ import com.os.beans.entities.BaseEntity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -22,11 +19,6 @@ import java.util.Set;
 @Entity
 @Table(name="BUS_TB_DISH_SERIES")
 public class DishSeriesEntity extends BaseEntity {
-    @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY) // MYSQL ID generator
-    @Column(name="ID", nullable=false,updatable=false)
-    private long id;
-
     @Column(name="SERIES_NO")
     private String seriesNo;
 
@@ -44,14 +36,6 @@ public class DishSeriesEntity extends BaseEntity {
     @OneToMany(mappedBy = "parent")
     @OrderBy("id")
     private Set<DishSeriesEntity> children = new HashSet<>();
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
 
     public String getSeriesNo() {
         return seriesNo;

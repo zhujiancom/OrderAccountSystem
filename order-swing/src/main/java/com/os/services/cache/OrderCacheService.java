@@ -4,12 +4,12 @@ import com.os.modelview.OrderPage;
 import com.os.order.beans.entities.OrderEntity;
 import com.os.utils.DateUtil;
 import org.springframework.beans.factory.InitializingBean;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.Cache;
 import org.springframework.cache.ehcache.EhCacheCacheManager;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
-import javax.annotation.Resource;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +22,7 @@ public class OrderCacheService implements InitializingBean{
     public static final String PO_OBJ_PREFIX="_PO_OBJ_";
     public static final String PAGE_OBJ_PREFIX="_PAGE_OBJ_";
 
-    @Resource(name="cacheManager")
+    @Autowired
     private EhCacheCacheManager cachemanager;
 
     private Cache orderCache;
