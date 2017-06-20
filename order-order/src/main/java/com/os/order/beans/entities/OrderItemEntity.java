@@ -1,6 +1,7 @@
 package com.os.order.beans.entities;
 
 import com.os.beans.entities.BaseEntity;
+import lombok.Data;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -16,6 +17,7 @@ import java.math.BigDecimal;
  */
 @Entity
 @Table(name="BUS_TB_ORDER_ITEM")
+@Data
 public class OrderItemEntity extends BaseEntity {
     /* 订单编号 */
     @Column(name = "BILL_NO")
@@ -73,116 +75,4 @@ public class OrderItemEntity extends BaseEntity {
     @ManyToOne(cascade = CascadeType.ALL,fetch= FetchType.EAGER)
     @JoinColumn(name = "ORDER_ID")
     private OrderEntity order;
-
-    public String getBillNo() {
-        return billNo;
-    }
-
-    public void setBillNo(String billNo) {
-        this.billNo = billNo;
-    }
-
-    public String getPayNo() {
-        return payNo;
-    }
-
-    public void setPayNo(String payNo) {
-        this.payNo = payNo;
-    }
-
-    public String getDishNo() {
-        return dishNo;
-    }
-
-    public void setDishNo(String dishNo) {
-        this.dishNo = dishNo;
-    }
-
-    public String getSuitNo() {
-        return suitNo;
-    }
-
-    public void setSuitNo(String suitNo) {
-        this.suitNo = suitNo;
-    }
-
-    public Boolean getSuitFlag() {
-        return suitFlag;
-    }
-
-    public void setSuitFlag(Boolean suitFlag) {
-        this.suitFlag = suitFlag;
-    }
-
-    public BigDecimal getDiscountRate() {
-        return discountRate;
-    }
-
-    public void setDiscountRate(BigDecimal discountRate) {
-        this.discountRate = discountRate;
-    }
-
-    public BigDecimal getDiscountAmount() {
-        return discountAmount;
-    }
-
-    public void setDiscountAmount(BigDecimal discountAmount) {
-        this.discountAmount = discountAmount;
-    }
-
-    public BigDecimal getRealAmount() {
-        return realAmount;
-    }
-
-    public void setRealAmount(BigDecimal realAmount) {
-        this.realAmount = realAmount;
-    }
-
-    public BigDecimal getCount() {
-        return count;
-    }
-
-    public void setCount(BigDecimal count) {
-        this.count = count;
-    }
-
-    public BigDecimal getCountBack() {
-        return countBack;
-    }
-
-    public void setCountBack(BigDecimal countBack) {
-        this.countBack = countBack;
-    }
-
-    public BigDecimal getPrice() {
-        return price;
-    }
-
-    public void setPrice(BigDecimal price) {
-        this.price = price;
-    }
-
-    public BigDecimal getConsumeTime() {
-        return consumeTime;
-    }
-
-    public void setConsumeTime(BigDecimal consumeTime) {
-        this.consumeTime = consumeTime;
-    }
-
-    public BigDecimal getBackTime() {
-        return backTime;
-    }
-
-    public void setBackTime(BigDecimal backTime) {
-        this.backTime = backTime;
-    }
-
-    public OrderEntity getOrder() {
-        return order;
-    }
-
-    public void setOrder(OrderEntity order) {
-        this.order = order;
-    }
 }

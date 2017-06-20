@@ -1,6 +1,7 @@
 package com.os.order.beans.entities;
 
 import com.os.beans.entities.BaseEntity;
+import lombok.Data;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,16 +15,8 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "bus_tb_vendor")
+@Data
 public class VendorEntity extends BaseEntity{
-    private String vendorName;
-
     @Column(name="VENDOR_NAME")
-    public String getVendorName() {
-        return vendorName;
-    }
-
-    public void setVendorName(String vendorName) {
-        this.vendorName = vendorName;
-    }
-
+    private String vendorName;
 }

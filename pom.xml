@@ -31,6 +31,7 @@
         <poi.version>3.14</poi.version>
         <spring-boot.version>1.5.3.RELEASE</spring-boot.version>
         <freemarker.version>2.3.27</freemarker.version>
+        <lombok-version>1.16.16</lombok-version>
     </properties>
 
     <profiles>
@@ -307,6 +308,12 @@
                 <artifactId>javax.servlet-api</artifactId>
                 <version>3.1.0</version>
                 <scope>provided</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok-version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

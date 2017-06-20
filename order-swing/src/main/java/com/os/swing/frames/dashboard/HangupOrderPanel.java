@@ -7,9 +7,9 @@ import com.os.swing.components.slidebar.HangupTableSlideBarHandler;
 import com.os.swing.components.slidebar.SlideBar;
 import com.os.swing.components.slidebar.SlideElement;
 import com.os.swing.models.OrderItemTable;
+import com.os.config.ApplicationContextProvider;
 import com.os.utils.DateUtil;
 import com.os.utils.PropertyUtils;
-import com.os.utils.SpringUtils;
 import com.os.bean.vos.HangupTabelInfoVO;
 import org.springframework.util.CollectionUtils;
 
@@ -26,8 +26,6 @@ import java.awt.Container;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Graphics;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Executors;
@@ -52,21 +50,16 @@ public class HangupOrderPanel extends JPanel {
 
     private IMetaDataFacadeService metadataFacade;
 
-    private JLabel noDataMsg = new JLabel("<html><font color='red' size='20'>没有数据</font></html>");
+    private JLabel noDataMsg = new JLabel("<html><font color='red' size='20'>No Data Fetch</font></html>");
 
     public HangupOrderPanel(Container parentContainer){
         this.parentContainer = parentContainer;
         setName(NAME);
-        metadataFacade = (IMetaDataFacadeService) SpringUtils.getBean("MetaDataFacadeService");
+//        metadataFacade = (IMetaDataFacadeService) SpringUtils.getBean("MetaDataFacadeService");
+        metadataFacade = ApplicationContextProvider.getBean("MetaDataFacadeService",IMetaDataFacadeService.class);
         initComponent();
         executor = Executors.newSingleThreadScheduledExecutor();
-        executor.scheduleAtFixedRate(new Runnable() {
-
-            @Override
-            public void run() {
-                updateSlideBar();
-            }
-        }, 20, 20, TimeUnit.SECONDS);
+        executor.scheduleAtFixedRate(() -> {updateSlideBar();}, 20, 20, TimeUnit.SECONDS);
     }
 
     private void initComponent(){
@@ -80,13 +73,7 @@ public class HangupOrderPanel extends JPanel {
         upPanel.add(createSlideBar());
         upPanel.add(refreshBtn);
         add(upPanel,BorderLayout.NORTH);
-        refreshBtn.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                updateSlideBar();
-            }
-        });
+        refreshBtn.addActionListener((event) -> {updateSlideBar();});
     }
 
     public void updateSlideBar(){

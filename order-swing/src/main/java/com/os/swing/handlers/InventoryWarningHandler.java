@@ -1,8 +1,8 @@
 package com.os.swing.handlers;
 
+import com.os.config.ApplicationContextProvider;
 import com.os.services.IMetaDataFacadeService;
 import com.os.swing.frames.dashboard.QueryFormPanel;
-import com.os.utils.SpringUtils;
 
 /**
  * Created by jz on 2017/5/28.
@@ -10,7 +10,7 @@ import com.os.utils.SpringUtils;
 public class InventoryWarningHandler {
     private static IMetaDataFacadeService metadataFacade;
     static{
-        metadataFacade = (IMetaDataFacadeService) SpringUtils.getBean("MetaDataFacadeService");
+        metadataFacade = (IMetaDataFacadeService) ApplicationContextProvider.getBean("MetaDataFacadeService");
     }
     private InventoryWarningHandler(){}
 

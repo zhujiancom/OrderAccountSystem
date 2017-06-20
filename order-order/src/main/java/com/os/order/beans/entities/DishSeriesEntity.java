@@ -1,6 +1,7 @@
 package com.os.order.beans.entities;
 
 import com.os.beans.entities.BaseEntity;
+import lombok.Data;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -18,6 +19,7 @@ import java.util.Set;
  */
 @Entity
 @Table(name="BUS_TB_DISH_SERIES")
+@Data
 public class DishSeriesEntity extends BaseEntity {
     @Column(name="SERIES_NO")
     private String seriesNo;
@@ -36,44 +38,4 @@ public class DishSeriesEntity extends BaseEntity {
     @OneToMany(mappedBy = "parent")
     @OrderBy("id")
     private Set<DishSeriesEntity> children = new HashSet<>();
-
-    public String getSeriesNo() {
-        return seriesNo;
-    }
-
-    public void setSeriesNo(String seriesNo) {
-        this.seriesNo = seriesNo;
-    }
-
-    public String getSeriesName() {
-        return seriesName;
-    }
-
-    public void setSeriesName(String seriesName) {
-        this.seriesName = seriesName;
-    }
-
-    public List<DishEntity> getDishes() {
-        return dishes;
-    }
-
-    public void setDishes(List<DishEntity> dishes) {
-        this.dishes = dishes;
-    }
-
-    public DishSeriesEntity getParent() {
-        return parent;
-    }
-
-    public void setParent(DishSeriesEntity parent) {
-        this.parent = parent;
-    }
-
-    public Set<DishSeriesEntity> getChildren() {
-        return children;
-    }
-
-    public void setChildren(Set<DishSeriesEntity> children) {
-        this.children = children;
-    }
 }

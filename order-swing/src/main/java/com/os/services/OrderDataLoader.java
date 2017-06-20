@@ -1,8 +1,8 @@
 package com.os.services;
 
+import com.os.config.ApplicationContextProvider;
 import com.os.swing.frames.OrderPageDisplayProvider;
 import com.os.utils.DateUtil;
-import com.os.utils.SpringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -32,10 +32,10 @@ public class OrderDataLoader implements Runnable {
         //显示 order 数据
         provider.displayOrders(() -> {
             // 加载 order 数据
-            orderLoader = (IOrderDataLoaderService) SpringUtils.getBean("DBLoader");
+            orderLoader = (IOrderDataLoaderService) ApplicationContextProvider.getBean("DBLoader");
             orderLoader.load(queryDate);
 
-            IOrderService orderService = (IOrderService) SpringUtils.getBean("OrderService");
+            IOrderService orderService = (IOrderService) ApplicationContextProvider.getBean("OrderService");
             String time = DateUtil.date2Str(queryDate, "yyyyMMdd");
             return orderService.queryOrderPage(time);
         });

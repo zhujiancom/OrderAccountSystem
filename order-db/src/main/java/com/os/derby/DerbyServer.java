@@ -125,8 +125,6 @@ public class DerbyServer {
 
         private String homeName;
 
-        private String propertiesFile;
-
         public DerbyServerBuilder host(String host){
             this.host = host;
             return this;

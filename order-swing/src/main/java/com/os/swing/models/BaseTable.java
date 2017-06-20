@@ -1,7 +1,7 @@
 package com.os.swing.models;
 
+import com.os.config.ApplicationContextProvider;
 import com.os.services.IMetaDataFacadeService;
-import com.os.utils.SpringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -26,7 +26,7 @@ public abstract class BaseTable<T> extends JTable {
     protected static final IMetaDataFacadeService metadataFacade;
 
     static{
-        metadataFacade = (IMetaDataFacadeService) SpringUtils.getBean("MetaDataFacadeService");
+        metadataFacade = (IMetaDataFacadeService) ApplicationContextProvider.getBean("MetaDataFacadeService");
     }
 
     public BaseTable(){

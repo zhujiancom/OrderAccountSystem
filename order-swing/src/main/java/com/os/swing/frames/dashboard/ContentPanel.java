@@ -1,12 +1,12 @@
 package com.os.swing.frames.dashboard;
 
+import com.os.config.ApplicationContextProvider;
 import com.os.exceptions.ExceptionConstant;
 import com.os.exceptions.ExceptionManagementFactory;
 import com.os.services.IDataCleanFacadeService;
 import com.os.swing.models.OrderItemTable;
 import com.os.swing.models.OrderTable;
 import com.os.utils.DateUtil;
-import com.os.utils.SpringUtils;
 import com.os.utils.StringUtils;
 
 import javax.swing.BorderFactory;
@@ -85,7 +85,7 @@ public class ContentPanel extends JSplitPane {
             OrderItemTable.OrderItemTableModel itemModel = (OrderItemTable.OrderItemTableModel) itemTable.getModel();
             itemModel.setRowCount(0);
         }
-        IDataCleanFacadeService datacleaner = (IDataCleanFacadeService) SpringUtils.getBean("DataCleanFacadeService");
+        IDataCleanFacadeService datacleaner = (IDataCleanFacadeService) ApplicationContextProvider.getBean("DataCleanFacadeService");
         datacleaner.doCleanAllOfOneDay(time);
     }
 

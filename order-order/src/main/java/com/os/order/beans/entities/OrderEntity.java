@@ -1,6 +1,8 @@
 package com.os.order.beans.entities;
 
 import com.os.beans.entities.BaseEntity;
+import lombok.Data;
+import lombok.ToString;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -19,6 +21,8 @@ import java.util.Set;
  */
 @Entity
 @Table(name="BUS_TB_ORDER")
+@Data
+@ToString()
 public class OrderEntity extends BaseEntity {
     /* 订单编号   */
     @Column(name="ORDER_NO")
@@ -76,116 +80,4 @@ public class OrderEntity extends BaseEntity {
     @JoinTable(name="ORDER_SCHEME_REF",joinColumns={@JoinColumn(name="ORDER_ID",referencedColumnName="id")}
             ,inverseJoinColumns={@JoinColumn(name="SCHEME_ID",referencedColumnName="id")})
     private Set<SchemeEntity> schemes;
-
-    public String getOrderNo() {
-        return orderNo;
-    }
-
-    public void setOrderNo(String orderNo) {
-        this.orderNo = orderNo;
-    }
-
-    public String getPayNo() {
-        return payNo;
-    }
-
-    public void setPayNo(String payNo) {
-        this.payNo = payNo;
-    }
-
-    public String getTableNo() {
-        return tableNo;
-    }
-
-    public void setTableNo(String tableNo) {
-        this.tableNo = tableNo;
-    }
-
-    public Date getOpenDeskTime() {
-        return openDeskTime;
-    }
-
-    public void setOpenDeskTime(Date openDeskTime) {
-        this.openDeskTime = openDeskTime;
-    }
-
-    public Date getCheckoutTime() {
-        return checkoutTime;
-    }
-
-    public void setCheckoutTime(Date checkoutTime) {
-        this.checkoutTime = checkoutTime;
-    }
-
-    public Date getDay() {
-        return day;
-    }
-
-    public void setDay(Date day) {
-        this.day = day;
-    }
-
-    public BigDecimal getOriginPrice() {
-        return originPrice;
-    }
-
-    public void setOriginPrice(BigDecimal originPrice) {
-        this.originPrice = originPrice;
-    }
-
-    public String getSchemeName() {
-        return schemeName;
-    }
-
-    public void setSchemeName(String schemeName) {
-        this.schemeName = schemeName;
-    }
-
-    public BigDecimal getRealAmount() {
-        return realAmount;
-    }
-
-    public void setRealAmount(BigDecimal realAmount) {
-        this.realAmount = realAmount;
-    }
-
-    public Set<OrderItemEntity> getItems() {
-        return items;
-    }
-
-    public void setItems(Set<OrderItemEntity> items) {
-        this.items = items;
-    }
-
-    public BigDecimal getNoDiscountAmount() {
-        return noDiscountAmount;
-    }
-
-    public void setNoDiscountAmount(BigDecimal noDiscountAmount) {
-        this.noDiscountAmount = noDiscountAmount;
-    }
-
-    public Boolean getDiscountFlag() {
-        return discountFlag;
-    }
-
-    public void setDiscountFlag(Boolean discountFlag) {
-        this.discountFlag = discountFlag;
-    }
-
-    public Boolean getUnusualFlag() {
-        return unusualFlag;
-    }
-
-    public void setUnusualFlag(Boolean unusualFlag) {
-        this.unusualFlag = unusualFlag;
-    }
-
-    public Set<SchemeEntity> getSchemes() {
-        return schemes;
-    }
-
-    public void setSchemes(Set<SchemeEntity> schemes) {
-        this.schemes = schemes;
-    }
 }

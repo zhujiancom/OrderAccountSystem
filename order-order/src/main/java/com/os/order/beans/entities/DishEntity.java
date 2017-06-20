@@ -1,6 +1,7 @@
 package com.os.order.beans.entities;
 
 import com.os.beans.entities.BaseEntity;
+import lombok.Data;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
@@ -29,6 +30,7 @@ import java.math.BigDecimal;
  */
 @Entity
 @Table(name="BUS_TB_DISH")
+@Data
 public class DishEntity extends BaseEntity {
     /* 菜品编号 */
     @Column(name="DISH_NO")
@@ -74,97 +76,4 @@ public class DishEntity extends BaseEntity {
     /* 是否是外送费 */
     @Column(name="TAKEOUT_FEE_FLAG")
     private Boolean takeoutFeeFlag;
-
-    public String getDishNo() {
-        return dishNo;
-    }
-
-    public void setDishNo(String dishNo) {
-        this.dishNo = dishNo;
-    }
-
-    public String getDishName() {
-        return dishName;
-    }
-
-    public void setDishName(String dishName) {
-        this.dishName = dishName;
-    }
-
-    public BigDecimal getDishPrice() {
-        return dishPrice;
-    }
-
-    public void setDishPrice(BigDecimal dishPrice) {
-        this.dishPrice = dishPrice;
-    }
-
-    public DishSeriesEntity getDishSeries() {
-        return dishSeries;
-    }
-
-    public void setDishSeries(DishSeriesEntity dishSeries) {
-        this.dishSeries = dishSeries;
-    }
-
-    public BigDecimal getCost() {
-        return cost;
-    }
-
-    public void setCost(BigDecimal cost) {
-        this.cost = cost;
-    }
-
-    public Boolean getStopFlag() {
-        return stopFlag;
-    }
-
-    public void setStopFlag(Boolean stopFlag) {
-        this.stopFlag = stopFlag;
-    }
-
-    public Boolean getSuitFlag() {
-        return suitFlag;
-    }
-
-    public void setSuitFlag(Boolean suitFlag) {
-        this.suitFlag = suitFlag;
-    }
-
-    public Boolean getDiscountFlag() {
-        return discountFlag;
-    }
-
-    public void setDiscountFlag(Boolean discountFlag) {
-        this.discountFlag = discountFlag;
-    }
-
-    public Boolean getStatisticFlag() {
-        return statisticFlag;
-    }
-
-    public void setStatisticFlag(Boolean statisticFlag) {
-        this.statisticFlag = statisticFlag;
-    }
-
-    public Boolean getBoxFeeFlag() {
-        return boxFeeFlag;
-    }
-
-    public void setBoxFeeFlag(Boolean boxFeeFlag) {
-        this.boxFeeFlag = boxFeeFlag;
-    }
-
-    public Boolean getTakeoutFeeFlag() {
-        return takeoutFeeFlag;
-    }
-
-    public void setTakeoutFeeFlag(Boolean takeoutFeeFlag) {
-        this.takeoutFeeFlag = takeoutFeeFlag;
-    }
-
-    @Override
-    public String toString() {
-        return ToStringBuilder.reflectionToString(this, ToStringStyle.SIMPLE_STYLE);
-    }
 }

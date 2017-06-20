@@ -2,6 +2,7 @@ package com.os.order.beans.entities;
 
 import com.os.beans.entities.AccessoryEntity;
 import com.os.enums.CommonEnums;
+import lombok.Data;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -24,7 +25,8 @@ import java.util.Set;
  */
 @Entity
 @Table(name = "BUS_TB_SCHEME")
-public class SchemeEntity extends AccessoryEntity {
+public @Data
+class SchemeEntity extends AccessoryEntity {
     /* 活动编号 */
     @Column(name="SCHEME_NO")
     private String schemeNo;

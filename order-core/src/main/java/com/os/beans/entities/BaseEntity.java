@@ -1,5 +1,8 @@
 package com.os.beans.entities;
 
+import lombok.Data;
+import lombok.NonNull;
+
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,6 +13,7 @@ import javax.persistence.Version;
 import java.io.Serializable;
 
 @MappedSuperclass
+@Data
 public abstract class BaseEntity implements Serializable, Cloneable{
 
 	/**
@@ -20,25 +24,10 @@ public abstract class BaseEntity implements Serializable, Cloneable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID", nullable = false, updatable = false)
+	@NonNull
 	private Long id;
 
 	@Version
 	@Column(name="VERSION",nullable = false)
 	private Integer version = 0;
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public Integer getVersion(){
-		return version;
-	};
-
-	public void setVersion(Integer version){
-		this.version = version;
-	};
 }
