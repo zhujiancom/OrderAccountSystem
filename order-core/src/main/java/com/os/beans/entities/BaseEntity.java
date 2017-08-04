@@ -13,7 +13,6 @@ import javax.persistence.Version;
 import java.io.Serializable;
 
 @MappedSuperclass
-@Data
 public abstract class BaseEntity implements Serializable, Cloneable{
 
 	/**
