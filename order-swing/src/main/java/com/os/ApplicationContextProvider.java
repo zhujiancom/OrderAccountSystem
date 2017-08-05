@@ -1,5 +1,7 @@
 package com.os;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
@@ -10,6 +12,8 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class ApplicationContextProvider implements ApplicationContextAware {
+    private static final Logger logger = LogManager.getLogger();
+
     private static ApplicationContext context;
 
     private ApplicationContextProvider(){}
@@ -37,8 +41,6 @@ public class ApplicationContextProvider implements ApplicationContextAware {
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
         context = applicationContext;
-        System.out.println("---------------------------------------------------------------------");
-        System.out.println("========ApplicationContext配置成功,在普通类可以通过调用ApplicationContextProvider.getApplicationContext()获取applicationContext对象,ApplicationContext="+ApplicationContextProvider.getApplicationContext()+"========");
-        System.out.println("---------------------------------------------------------------------");
+        logger.debug("========ApplicationContext配置成功,在普通类可以通过调用ApplicationContextProvider.getApplicationContext()获取applicationContext对象,ApplicationContext="+ApplicationContextProvider.getApplicationContext()+"========");
     }
 }
