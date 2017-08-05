@@ -22,7 +22,7 @@
     <properties>
         <java.version>1.8</java.version>
         <spring.version>4.3.4.RELEASE</spring.version>
-        <hibernate.version>4.3.5.Final</hibernate.version>
+        <hibernate.version>5.3.5.Final</hibernate.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <jackson.version>1.9.9</jackson.version>
         <release-train>Hopper-SR6</release-train>
@@ -220,6 +220,12 @@
                 <!--<artifactId>hibernate-entitymanager</artifactId>-->
                 <!--<version>${hibernate.version}</version>-->
             <!--</dependency>-->
+            <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-validator -->
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-validator</artifactId>
+                <version>5.3.5.Final</version>
+            </dependency>
 
 
             <!-- AspectJ -->

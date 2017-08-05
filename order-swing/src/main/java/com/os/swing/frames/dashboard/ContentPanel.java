@@ -1,6 +1,6 @@
 package com.os.swing.frames.dashboard;
 
-import com.os.config.ApplicationContextProvider;
+import com.os.ApplicationContextProvider;
 import com.os.exceptions.ExceptionConstant;
 import com.os.exceptions.ExceptionManagementFactory;
 import com.os.services.IDataCleanFacadeService;

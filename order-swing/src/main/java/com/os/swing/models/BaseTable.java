@@ -1,6 +1,6 @@
 package com.os.swing.models;
 
-import com.os.config.ApplicationContextProvider;
+import com.os.ApplicationContextProvider;
 import com.os.services.IMetaDataFacadeService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

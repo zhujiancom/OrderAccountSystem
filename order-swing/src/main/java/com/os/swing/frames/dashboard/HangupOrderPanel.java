@@ -7,7 +7,7 @@ import com.os.swing.components.slidebar.HangupTableSlideBarHandler;
 import com.os.swing.components.slidebar.SlideBar;
 import com.os.swing.components.slidebar.SlideElement;
 import com.os.swing.models.OrderItemTable;
-import com.os.config.ApplicationContextProvider;
+import com.os.ApplicationContextProvider;
 import com.os.utils.DateUtil;
 import com.os.utils.PropertyUtils;
 import com.os.bean.vos.HangupTabelInfoVO;

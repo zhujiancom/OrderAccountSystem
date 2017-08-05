@@ -1,6 +1,6 @@
 package com.os.services;
 
-import com.os.config.ApplicationContextProvider;
+import com.os.ApplicationContextProvider;
 import com.os.swing.frames.OrderPageDisplayProvider;
 import com.os.utils.DateUtil;
 import org.apache.logging.log4j.LogManager;

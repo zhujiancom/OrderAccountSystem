@@ -1,10 +1,13 @@
 package com.os.services.impl;
 
+import com.os.bean.vos.OrderVO;
+import com.os.modelview.OrderPage;
 import com.os.services.IMetaDataFacadeService;
 import com.os.bean.vos.HangupTabelInfoVO;
 import com.os.bean.vos.OrderItemVO;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,7 +17,9 @@ import java.util.List;
 public class MetaDataFacadeServiceImpl implements IMetaDataFacadeService {
     @Override
     public List<HangupTabelInfoVO> queryHangupTableInfo() {
-        return null;
+        List<HangupTabelInfoVO> results = new ArrayList<HangupTabelInfoVO>();
+
+        return results;
     }
 
     @Override

@@ -1,4 +1,4 @@
-package com.os.config;
+package com.os;
 
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 public class ApplicationContextProvider implements ApplicationContextAware {
     private static ApplicationContext context;
 
-//    private ApplicationContextProvider(){}
+    private ApplicationContextProvider(){}
 
     public static ApplicationContext getApplicationContext(){
         return context;

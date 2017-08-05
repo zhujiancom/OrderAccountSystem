@@ -1,6 +1,6 @@
 package com.os.swing.handlers;
 
-import com.os.config.ApplicationContextProvider;
+import com.os.ApplicationContextProvider;
 import com.os.services.IMetaDataFacadeService;
 import com.os.swing.frames.dashboard.QueryFormPanel;
 
