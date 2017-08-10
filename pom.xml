@@ -16,6 +16,7 @@
         <module>order-web</module>
         <module>order-db</module>
         <module>order-order</module>
+        <module>stock-order</module>
     </modules>
     <name>OrderAccountSystem</name>
 
