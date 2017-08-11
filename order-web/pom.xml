@@ -61,6 +61,12 @@
 
         <dependency>
             <groupId>com.os</groupId>
+            <artifactId>order-core</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.os</groupId>
             <artifactId>stock-order</artifactId>
             <version>${project.version}</version>
         </dependency>

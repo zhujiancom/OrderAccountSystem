@@ -8,7 +8,7 @@
        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd">
 
     <!-- scan the package and the sub package -->
-    <context:component-scan base-package="com.os.web">
+    <context:component-scan base-package="com.os">
         <!--<context:exclude-filter type="annotation"-->
                                 <!--expression="org.springframework.stereotype.Controller"/>-->
         <!--<context:exclude-filter type="annotation"-->
