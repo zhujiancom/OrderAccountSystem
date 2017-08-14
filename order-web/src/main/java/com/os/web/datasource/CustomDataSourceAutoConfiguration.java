@@ -1,4 +1,4 @@
-package com.os.datasource;
+package com.os.web.datasource;
 
 import org.apache.derby.jdbc.EmbeddedConnectionPoolDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,17 +15,14 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import javax.sql.DataSource;
 import java.io.File;
 
-/**
- * Created by jian zhu on 06/01/2017.
- */
 @Configuration
 @EnableConfigurationProperties({
-        CustomDataSourceAutoConfiguration.SqlServerDSProperties.class,
+        CustomDataSourceAutoConfiguration.SecondDSProperties.class,
         CustomDataSourceAutoConfiguration.DerbyDSProperties.class
 })
 public class CustomDataSourceAutoConfiguration {
     @Autowired
-    private SqlServerDSProperties sqlServerDSProperties;
+    private SecondDSProperties secondDSProperties;
 
     @Autowired
     private DerbyDSProperties derbyDSProperties;
@@ -33,14 +30,24 @@ public class CustomDataSourceAutoConfiguration {
     @Value("${derby.system.home}")
     private String derbyHome;
 
-    @Bean(name="sqlServerDataSource")
-    @Qualifier("originalDS")
-    public DataSource sqlServerDataSource(){
-        return crateDataSource(sqlServerDSProperties);
+    @Bean(name="secondDataSource")
+    @Qualifier("secondDS")
+    public DataSource secondDataSource(){
+        EmbeddedConnectionPoolDataSource pooled = new EmbeddedConnectionPoolDataSource();
+        pooled.setUser(secondDSProperties.getUsername());
+        pooled.setPassword(secondDSProperties.getPassword());
+        pooled.setDatabaseName(secondDSProperties.getDbname());
+
+        File rootDir = new File(System.getProperty("user.dir")+File.separator+derbyHome);
+        File databaseDir = new File(rootDir,secondDSProperties.getDbname());
+        if(!databaseDir.exists()){
+            pooled.setCreateDatabase("create");
+        }
+        return pooled;
     }
 
     @Primary
-    @Bean(name="derbyDataSource")
+    @Bean(name="primaryDataSource")
     @Qualifier("primaryDS")
     public DataSource derbyDataSource(){
         EmbeddedConnectionPoolDataSource pooled = new EmbeddedConnectionPoolDataSource();
@@ -71,12 +78,12 @@ public class CustomDataSourceAutoConfiguration {
     }
 
     @Bean(name="originalJdbcTemplate")
-    public JdbcTemplate originalJdbcTemplate(@Qualifier("originalDS") DataSource dataSource){
+    public JdbcTemplate originalJdbcTemplate(@Qualifier("secondDS") DataSource dataSource){
         return new JdbcTemplate(dataSource);
     }
 
-    @ConfigurationProperties(prefix = "spring.datasource.original")
-    static class SqlServerDSProperties extends BaseDataSourceProperties{}
+    @ConfigurationProperties(prefix = "spring.datasource.secondDB")
+    static class SecondDSProperties extends BaseDataSourceProperties{}
 
     @ConfigurationProperties(prefix = "spring.datasource.primary")
     static class DerbyDSProperties extends BaseDataSourceProperties{}

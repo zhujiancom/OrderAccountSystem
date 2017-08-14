@@ -55,13 +55,7 @@
     <dependencies>
         <dependency>
             <groupId>com.os</groupId>
-            <artifactId>order-core</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.os</groupId>
-            <artifactId>order-core</artifactId>
+            <artifactId>order-db</artifactId>
             <version>${project.version}</version>
         </dependency>
 
@@ -80,6 +74,12 @@
                     <artifactId>spring-boot-starter-logging</artifactId>
                 </exclusion>
             </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <optional>true</optional>
         </dependency>
 
         <!--<dependency>-->
