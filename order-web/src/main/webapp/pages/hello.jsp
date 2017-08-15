@@ -11,6 +11,6 @@
     <title></title>
 </head>
 <body>
-  Hello World in hell.jsp!
+  Hello World ${message}!
 </body>
 </html>

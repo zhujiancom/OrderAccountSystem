@@ -11,9 +11,9 @@ import org.springframework.web.servlet.handler.SimpleUrlHandlerMapping;
 import java.util.ArrayList;
 import java.util.List;
 
-@Configuration
+//@Configuration
 public class WebConfiguration extends WebMvcConfigurerAdapter {
-    @Bean
+//    @Bean
     public FilterRegistrationBean getCharacterEncodingFilter(){
         CharacterEncodingFilter characterEncodingFilter = new CharacterEncodingFilter();
         characterEncodingFilter.setEncoding("UTF-8");

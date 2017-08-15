@@ -39,7 +39,7 @@
         <profile>
             <id>dev</id>
             <properties>
-                <root-level>debug</root-level>
+                <root-level>trace</root-level>
             </properties>
             <activation>
                 <activeByDefault>true</activeByDefault>
