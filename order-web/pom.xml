@@ -16,7 +16,7 @@
 
     <profiles>
         <profile>
-            <id>dev</id>
+            <id>prod</id>
             <dependencies>
                 <dependency>
                     <groupId>org.springframework.boot</groupId>
@@ -42,7 +42,7 @@
         </profile>
 
         <profile>
-            <id>prod</id>
+            <id>dev</id>
             <dependencies>
                 <dependency>
                     <groupId>org.springframework.boot</groupId>
@@ -54,13 +54,6 @@
                         </exclusion>
                     </exclusions>
                 </dependency>
-
-                <dependency>
-                    <groupId>javax.servlet</groupId>
-                    <artifactId>javax.servlet-api</artifactId>
-                    <scope>provided</scope>
-                </dependency>
-
             </dependencies>
         </profile>
     </profiles>
@@ -109,6 +102,17 @@
     </build>
 
     <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-logging</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
         <dependency>
             <groupId>com.os</groupId>
             <artifactId>order-db</artifactId>
