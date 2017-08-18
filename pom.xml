@@ -12,7 +12,7 @@
         <module>order-account</module>
         <module>order-bill</module>
         <module>order-privilege</module>
-        <module>order-swing</module>
+        <!--<module>order-swing</module>-->
         <module>order-web</module>
         <module>order-db</module>
         <module>order-order</module>
@@ -46,7 +46,7 @@
             </activation>
         </profile>
         <profile>
-            <id>production</id>
+            <id>prod</id>
             <properties>
                 <root-level>warn</root-level>
             </properties>
