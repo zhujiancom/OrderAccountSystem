@@ -31,7 +31,7 @@ public class HelloWorldController {
         model.addAttribute("singlePerson", single);
         model.addAttribute("people", people);
 
-        return "index";
+        return "person";
     }
 
     @RequestMapping("/hello")
