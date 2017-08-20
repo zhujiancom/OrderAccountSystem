@@ -12,15 +12,15 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class MyServletContainerCustomizer implements EmbeddedServletContainerCustomizer {
-    @Autowired
-    private TomcatConnectorCustomizer customizer;
+//    @Autowired
+//    private TomcatConnectorCustomizer customizer;
 
     @Override
     public void customize(ConfigurableEmbeddedServletContainer container) {
         container.addErrorPages(new ErrorPage(HttpStatus.NOT_FOUND,"/404.html"));
-        if(container instanceof TomcatEmbeddedServletContainer){
-            TomcatEmbeddedServletContainerFactory containerFactory = (TomcatEmbeddedServletContainerFactory) container;
-            containerFactory.addConnectorCustomizers(customizer);
-        }
+//        if(container instanceof TomcatEmbeddedServletContainer){
+//            TomcatEmbeddedServletContainerFactory containerFactory = (TomcatEmbeddedServletContainerFactory) container;
+//            containerFactory.addConnectorCustomizers(customizer);
+//        }
     }
 }

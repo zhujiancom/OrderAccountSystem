@@ -16,36 +16,36 @@ import java.io.FileNotFoundException;
 @Configuration
 @EnableConfigurationProperties
 public class TomcatServletContainerConfig {
-    @Value("${server.port.http}")
-    private int httpServerPort;
+//    @Value("${server.port.http}")
+//    private int httpServerPort;
+//
+//    @Value("${server.port}")
+//    private int httpsServerPort;
 
-    @Value("${server.port}")
-    private int httpsServerPort;
-
-    @Bean
-    public EmbeddedServletContainerFactory servletContainer() throws FileNotFoundException{
-        TomcatEmbeddedServletContainerFactory tomcat = new TomcatEmbeddedServletContainerFactory(){
-            @Override
-            protected void postProcessContext(Context context) {
-                SecurityConstraint securityConstraint = new SecurityConstraint();
-                securityConstraint.setUserConstraint("CONFIDENTIAL");
-                SecurityCollection collection = new SecurityCollection();
-                collection.addPattern("/*");
-                securityConstraint.addCollection(collection);
-                context.addConstraint(securityConstraint);
-            }
-        };
-        tomcat.addAdditionalTomcatConnectors(httpConnector());
-        return tomcat;
-    }
-
-    @Bean
-    public Connector httpConnector(){
-        Connector connector = new Connector("org.apache.coyote.http11.Http11NioProtocol");
-        connector.setScheme("http");
-        connector.setPort(httpServerPort);
-        connector.setSecure(false);
-        connector.setRedirectPort(httpsServerPort);
-        return connector;
-    }
+//    @Bean
+//    public EmbeddedServletContainerFactory servletContainer() throws FileNotFoundException{
+//        TomcatEmbeddedServletContainerFactory tomcat = new TomcatEmbeddedServletContainerFactory(){
+//            @Override
+//            protected void postProcessContext(Context context) {
+//                SecurityConstraint securityConstraint = new SecurityConstraint();
+//                securityConstraint.setUserConstraint("CONFIDENTIAL");
+//                SecurityCollection collection = new SecurityCollection();
+//                collection.addPattern("/*");
+//                securityConstraint.addCollection(collection);
+//                context.addConstraint(securityConstraint);
+//            }
+//        };
+//        tomcat.addAdditionalTomcatConnectors(httpConnector());
+//        return tomcat;
+//    }
+//
+//    @Bean
+//    public Connector httpConnector(){
+//        Connector connector = new Connector("org.apache.coyote.http11.Http11NioProtocol");
+//        connector.setScheme("http");
+//        connector.setPort(httpServerPort);
+//        connector.setSecure(false);
+//        connector.setRedirectPort(httpsServerPort);
+//        return connector;
+//    }
 }
