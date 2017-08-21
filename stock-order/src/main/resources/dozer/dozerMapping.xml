@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mappings xmlns="http://dozer.sourceforge.net" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://dozer.sourceforge.net
+http://dozer.sourceforge.net/schema/beanmapping.xsd">
+    <mapping map-null="false" map-empty-string="false">
+        <class-a>com.os.stock.beans.entity.StockTradeItemEntity</class-a>
+        <class-b>com.os.stock.beans.vos.StockTradeVO</class-b>
+        <field>
+            <a>turnover</a>
+            <b>amount</b>
+        </field>
+        <field>
+            <a>tradePrice</a>
+            <b>price</b>
+        </field>
+        <field>
+            <a>turnoverSum</a>
+            <b>totalAmount</b>
+        </field>
+        <field>
+            <a>currentCost</a>
+            <b>cost</b>
+        </field>
+        <field>
+            <a>residue</a>
+            <b>balance</b>
+        </field>
+        <field custom-converter="com.os.utils.convert.dozer.StringToEnumConverter">
+            <a>tradeType</a>
+            <b>tradeType</b>
+        </field>
+    </mapping>
+</mappings>

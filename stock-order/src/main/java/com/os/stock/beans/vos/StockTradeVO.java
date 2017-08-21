@@ -17,8 +17,4 @@ public @Data class StockTradeVO {
     private Integer totalAmount;
     private BigDecimal cost;
     private Integer balance;
-
-    public StockTradeVO(){
-        super();
-    }
 }

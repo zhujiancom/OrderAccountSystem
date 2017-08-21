@@ -22,7 +22,6 @@ public class StockTradeItemEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID", nullable = false, updatable = false)
-    @NonNull
     private Long id;
 
     @Column(name="STOCK_NO")

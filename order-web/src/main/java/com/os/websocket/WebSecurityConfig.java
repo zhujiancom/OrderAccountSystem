@@ -29,11 +29,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         auth.inMemoryAuthentication()
                 .withUser("zj").password("zj").roles("USER")
                 .and()
-                .withUser("eric").password("eric").roles("USER");
+                .withUser("eric").password("eric").roles("USER")
+                .and()
+                .withUser("admin").password("admin").roles("USER");
     }
 
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers("/resources/static/**");
+        web.ignoring().antMatchers("/resources/static/**")
+                .and().ignoring().antMatchers("/static/**")
+                .and().ignoring().antMatchers("/bootstrap/**");
     }
 }

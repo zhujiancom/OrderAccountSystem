@@ -1,14 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
-    <title></title>
+    <link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
+    <link th:href="@{/bootstrap/css/bootstrap-theme.css}" rel="stylesheet"/>
+    <link rel="icon" th:href="@{/favicon.ico}"/>
+    <title>Error</title>
 </head>
 <body>
     <div class="container">
-        <div class="jumbotron alert-danger">
+        <div class="danger">
             <h1>Oops. Something went wrong</h1>
-            <h2>${status} ${error}</h2>
+            <h4><p class="danger" th:text="${{errorMessage}}"/></h4>
         </div>
     </div>
 </body>
