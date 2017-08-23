@@ -30,7 +30,7 @@ import java.util.Map;
 @EnableJpaRepositories(
         entityManagerFactoryRef = "entityManagerFactoryPrimary",
         transactionManagerRef = "transactionManagerPrimary",
-        basePackages = {"com.os.order.repository","com.os.stock.repository"}
+        basePackages = {"com.os.order.repository","com.os.stock.repository","com.os.privilege.repository"}
 )
 @Import({CustomDataSourceAutoConfiguration.class})
 public class PrimaryJPAConfiguration {
@@ -51,7 +51,7 @@ public class PrimaryJPAConfiguration {
     public LocalContainerEntityManagerFactoryBean entityManagerFactoryPrimary(EntityManagerFactoryBuilder builder){
         return builder.dataSource(primaryDataSource)
                 .properties(getVendorProperties(primaryDataSource))
-                .packages("com.os.order.beans.entities","com.os.stock.beans.entity")
+                .packages("com.os.order.beans.entities","com.os.stock.beans.entity","com.os.privilege.beans.entity")
                 .persistenceUnit("primaryPersistenceUnit")
                 .build();
     }

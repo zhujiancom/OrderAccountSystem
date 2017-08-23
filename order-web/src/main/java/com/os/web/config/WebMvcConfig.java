@@ -1,10 +1,12 @@
 package com.os.web.config;
 
+import com.os.privilege.service.CustomUserDetailsService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.format.FormatterRegistry;
 import org.springframework.format.datetime.DateFormatter;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
@@ -28,7 +30,5 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
     public DateFormatter dateFormatter(){
         return new DateFormatter("dd/MM/yyyy");
     }
-
-
 
 }
