@@ -10,7 +10,12 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.datasource.init.DatabasePopulator;
+import org.springframework.jdbc.datasource.init.DatabasePopulatorUtils;
+import org.springframework.jdbc.datasource.init.ResourceDatabasePopulator;
 
 import javax.sql.DataSource;
 import java.io.File;
@@ -53,13 +58,14 @@ public class CustomDataSourceAutoConfiguration {
         EmbeddedConnectionPoolDataSource pooled = new EmbeddedConnectionPoolDataSource();
         pooled.setUser(derbyDSProperties.getUsername());
         pooled.setPassword(derbyDSProperties.getPassword());
-        pooled.setDatabaseName(derbyDSProperties.getDbname());
+        pooled.setDatabaseName("memory:OrderWebMemDB");
+        pooled.setCreateDatabase("create");
+        pooled.setDataSourceName(derbyDSProperties.getUsername());
 
-        File rootDir = new File(System.getProperty("user.dir")+File.separator+derbyHome);
-        File databaseDir = new File(rootDir,derbyDSProperties.getDbname());
-        if(!databaseDir.exists()){
-            pooled.setCreateDatabase("create");
-        }
+        Resource initSchema =  new ClassPathResource("scripts/schema-derby.sql");
+        Resource initData =  new ClassPathResource("scripts/data-derby.sql");
+        DatabasePopulator databasePopulator = new ResourceDatabasePopulator(initSchema,initData);
+        DatabasePopulatorUtils.execute(databasePopulator,pooled);
         return pooled;
     }
 

@@ -31,15 +31,23 @@
 </nav>
 
 <div class="container">
+    <h1>Welcome Spring boot</h1>
+    <ul class="nav nav-pills">
+        <li role="presentation" class="active"><a href="stock/registerPage">Stock Register</a></li>
+        <li role="presentation"><a href="stock/summary">Stock Summary</a></li>
+    </ul>
+</div>
+
+<div class="container">
     <div class="starter-template">
         <h1 th:text="${msg.title}"></h1>
         <p class="bg-primary" th:text="${msg.content}"></p>
 
-        <div sec:authorize="hasRole('ROLE_ADMIN')">
+        <div sec:authorize="hasRole('ADMIN')">
             <p class="bg-info" th:text="${msg.etraInfo}"></p>
         </div>
 
-        <div sec:authorize="hasRole('ROLE_USER')">
+        <div sec:authorize="hasRole('USER')">
             <p class="bg-info">无更多信息显示</p>
         </div>
 
