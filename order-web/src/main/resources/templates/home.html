@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8"/>
     <link rel="icon" th:href="@{/favicon.ico}"/>
@@ -43,11 +43,11 @@
         <h1 th:text="${msg.title}"></h1>
         <p class="bg-primary" th:text="${msg.content}"></p>
 
-        <div sec:authorize="hasRole('ADMIN')">
+        <div sec:authorize="hasRole('ROLE_ADMIN')">
             <p class="bg-info" th:text="${msg.etraInfo}"></p>
         </div>
 
-        <div sec:authorize="hasRole('USER')">
+        <div sec:authorize="hasRole('ROLE_USER')">
             <p class="bg-info">无更多信息显示</p>
         </div>
 
