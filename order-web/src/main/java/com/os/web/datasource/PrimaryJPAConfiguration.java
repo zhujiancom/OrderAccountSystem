@@ -32,7 +32,7 @@ import java.util.Map;
         transactionManagerRef = "transactionManagerPrimary",
         basePackages = {"com.os.order.repository","com.os.stock.repository","com.os.privilege.repository"}
 )
-@Import({CustomDataSourceAutoConfiguration.class})
+@Import({DevDataSourceConfig.class})
 public class PrimaryJPAConfiguration {
     @Autowired
     @Qualifier("primaryDS")

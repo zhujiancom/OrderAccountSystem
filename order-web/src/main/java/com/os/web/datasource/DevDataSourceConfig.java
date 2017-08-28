@@ -10,6 +10,7 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
+import org.springframework.context.annotation.Profile;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -22,10 +23,11 @@ import java.io.File;
 
 @Configuration
 @EnableConfigurationProperties({
-        CustomDataSourceAutoConfiguration.SecondDSProperties.class,
-        CustomDataSourceAutoConfiguration.DerbyDSProperties.class
+        DevDataSourceConfig.SecondDSProperties.class,
+        DevDataSourceConfig.DerbyDSProperties.class
 })
-public class CustomDataSourceAutoConfiguration {
+@Profile("dev")
+public class DevDataSourceConfig {
     @Autowired
     private SecondDSProperties secondDSProperties;
 
@@ -43,11 +45,11 @@ public class CustomDataSourceAutoConfiguration {
         pooled.setPassword(secondDSProperties.getPassword());
         pooled.setDatabaseName(secondDSProperties.getDbname());
 
-        File rootDir = new File(System.getProperty("user.dir")+File.separator+derbyHome);
-        File databaseDir = new File(rootDir,secondDSProperties.getDbname());
-        if(!databaseDir.exists()){
-            pooled.setCreateDatabase("create");
-        }
+//        File rootDir = new File(System.getProperty("user.dir")+File.separator+derbyHome);
+//        File databaseDir = new File(rootDir,secondDSProperties.getDbname());
+//        if(!databaseDir.exists()){
+//            pooled.setCreateDatabase("create");
+//        }
         return pooled;
     }
 

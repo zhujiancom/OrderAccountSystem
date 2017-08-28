@@ -41,13 +41,5 @@ public class HelloWorldController {
         return "hello";
     }
 
-    @RequestMapping("/")
-    public String home(Model model){
-        Msg msg = new Msg();
-        msg.setTitle("测试标题");
-        msg.setContent("测试内容");
-        msg.setEtraInfo("额外信息，只对管理员显示");
-        model.addAttribute("msg",msg);
-        return "home";
-    }
+
 }
