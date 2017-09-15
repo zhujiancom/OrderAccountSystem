@@ -35,7 +35,7 @@ import java.util.Map;
 @Import({DevDataSourceConfig.class})
 public class PrimaryJPAConfiguration {
     @Autowired
-    @Qualifier("primaryDS")
+    @Qualifier("mysqlDS")
     private DataSource primaryDataSource;
 
     @Primary

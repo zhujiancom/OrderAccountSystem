@@ -19,43 +19,29 @@ import org.springframework.jdbc.datasource.init.DatabasePopulatorUtils;
 import org.springframework.jdbc.datasource.init.ResourceDatabasePopulator;
 
 import javax.sql.DataSource;
-import java.io.File;
 
 @Configuration
 @EnableConfigurationProperties({
-        DevDataSourceConfig.SecondDSProperties.class,
-        DevDataSourceConfig.DerbyDSProperties.class
+        DevDataSourceConfig.Derby2Properties.class,
+        DevDataSourceConfig.DerbyDSProperties.class,
+        DevDataSourceConfig.MysqlDSProperties.class
 })
 @Profile("dev")
 public class DevDataSourceConfig {
     @Autowired
-    private SecondDSProperties secondDSProperties;
+    private Derby2Properties derby2DSProperties;
 
     @Autowired
     private DerbyDSProperties derbyDSProperties;
 
+    @Autowired
+    private MysqlDSProperties mysqlDSProperties;
+
     @Value("${derby.system.home}")
     private String derbyHome;
 
-    @Bean(name="secondDataSource")
-    @Qualifier("secondDS")
-    public DataSource secondDataSource(){
-        EmbeddedConnectionPoolDataSource pooled = new EmbeddedConnectionPoolDataSource();
-        pooled.setUser(secondDSProperties.getUsername());
-        pooled.setPassword(secondDSProperties.getPassword());
-        pooled.setDatabaseName(secondDSProperties.getDbname());
-
-//        File rootDir = new File(System.getProperty("user.dir")+File.separator+derbyHome);
-//        File databaseDir = new File(rootDir,secondDSProperties.getDbname());
-//        if(!databaseDir.exists()){
-//            pooled.setCreateDatabase("create");
-//        }
-        return pooled;
-    }
-
-    @Primary
-    @Bean(name="primaryDataSource")
-    @Qualifier("primaryDS")
+    @Bean(name="derby1DataSource")
+    @Qualifier("derby1DS")
     public DataSource derbyDataSource(){
         EmbeddedConnectionPoolDataSource pooled = new EmbeddedConnectionPoolDataSource();
         pooled.setUser(derbyDSProperties.getUsername());
@@ -71,6 +57,28 @@ public class DevDataSourceConfig {
         return pooled;
     }
 
+    @Bean(name="derby2DataSource")
+    @Qualifier("derby2DS")
+    public DataSource derby2DataSource(){
+        EmbeddedConnectionPoolDataSource pooled = new EmbeddedConnectionPoolDataSource();
+        pooled.setUser(derby2DSProperties.getUsername());
+        pooled.setPassword(derby2DSProperties.getPassword());
+        pooled.setDatabaseName(derby2DSProperties.getDbname());
+        return pooled;
+    }
+
+    @Primary
+    @Bean(name="mysqlDataSource")
+    @Qualifier("mysqlDS")
+    public DataSource mysqlDataSource(){
+        DataSource dataSource = crateDataSource(mysqlDSProperties);
+//        Resource initSchema =  new ClassPathResource("scripts/schema-mysql.sql");
+//        Resource initData =  new ClassPathResource("scripts/data-mysql.sql");
+//        DatabasePopulator databasePopulator = new ResourceDatabasePopulator(initSchema,initData);
+//        DatabasePopulatorUtils.execute(databasePopulator,dataSource);
+        return dataSource;
+    }
+
     private DataSource crateDataSource(BaseDataSourceProperties properties){
         DataSourceBuilder builder = DataSourceBuilder.create()
                 .driverClassName(properties.getDriverClassName())
@@ -80,21 +88,29 @@ public class DevDataSourceConfig {
         return builder.build();
     }
 
-    @Bean(name="primaryJdbcTemplate")
-    public JdbcTemplate primaryJdbcTemplate(@Qualifier("primaryDS") DataSource dataSource){
+    @Bean(name="derby1JdbcTemplate")
+    public JdbcTemplate primaryJdbcTemplate(@Qualifier("derby1DS") DataSource dataSource){
         return new JdbcTemplate(dataSource);
     }
 
-    @Bean(name="originalJdbcTemplate")
-    public JdbcTemplate originalJdbcTemplate(@Qualifier("secondDS") DataSource dataSource){
+    @Bean(name="derby2JdbcTemplate")
+    public JdbcTemplate originalJdbcTemplate(@Qualifier("derby2DS") DataSource dataSource){
         return new JdbcTemplate(dataSource);
     }
 
-    @ConfigurationProperties(prefix = "spring.datasource.secondDB")
-    static class SecondDSProperties extends BaseDataSourceProperties{}
+    @Bean(name="mysqlJdbcTemplate")
+    public JdbcTemplate mysqlJdbcTemplate(@Qualifier("mysqlDS") DataSource dataSource){
+        return new JdbcTemplate(dataSource);
+    }
 
-    @ConfigurationProperties(prefix = "spring.datasource.primary")
+    @ConfigurationProperties(prefix = "spring.datasource.derby.2")
+    static class Derby2Properties extends BaseDataSourceProperties{}
+
+    @ConfigurationProperties(prefix = "spring.datasource.derby.1")
     static class DerbyDSProperties extends BaseDataSourceProperties{}
+
+    @ConfigurationProperties(prefix = "spring.datasource.mysql")
+    static class MysqlDSProperties extends BaseDataSourceProperties{}
 
     static class BaseDataSourceProperties{
         private String url;
