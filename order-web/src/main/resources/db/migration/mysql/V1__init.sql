@@ -5,6 +5,7 @@ create table sys_user(
   id bigint not null,
   user_name VARCHAR(255),
   password VARCHAR(255),
+  enable bit(1) DEFAULT 1,
   CONSTRAINT USER_PK PRIMARY KEY (id)
 );
 
@@ -19,8 +20,8 @@ create table sys_user_roles(
   roles_id bigint not null
 );
 
-insert into sys_user(id,user_name,password) values (1,'super','5F4DCC3B5AA765D61D8327DEB882CF99');
-insert into sys_user(id,user_name,password) values (2,'normal','5F4DCC3B5AA765D61D8327DEB882CF99');
+insert into sys_user(id,user_name,password,enable) values (1,'super','5f4dcc3b5aa765d61d8327deb882cf99',1);
+insert into sys_user(id,user_name,password,enable) values (2,'normal','5f4dcc3b5aa765d61d8327deb882cf99',1);
 
 insert into sys_role(id,name) values (1,'role_admin');
 insert into sys_role(id,name) values (2,'role_user');

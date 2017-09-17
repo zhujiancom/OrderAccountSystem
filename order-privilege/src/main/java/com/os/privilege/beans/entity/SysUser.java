@@ -31,6 +31,9 @@ public class SysUser implements UserDetails {
     @Column(name="PASSWORD")
     private String password;
 
+    @Column(name="ENABLE")
+    private boolean enable;
+
     @ManyToMany(cascade = {CascadeType.REFRESH},fetch = FetchType.EAGER)
     private List<SysRole> roles;
 
@@ -71,7 +74,7 @@ public class SysUser implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return true;
+        return enable;
     }
 
     public List<SysRole> getRoles() {
@@ -100,5 +103,13 @@ public class SysUser implements UserDetails {
 
     public void setRoles(List<SysRole> roles) {
         this.roles = roles;
+    }
+
+    public boolean isEnable() {
+        return enable;
+    }
+
+    public void setEnable(boolean enable) {
+        this.enable = enable;
     }
 }
