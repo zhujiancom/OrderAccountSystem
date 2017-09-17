@@ -1,7 +1,7 @@
 package com.os.services.impl;
 
 import com.os.modelview.OrderPage;
-import com.os.order.beans.entities.OrderEntity;
+import com.os.beans.entities.OrderEntity;
 import com.os.services.IOrderService;
 import com.os.services.cache.OrderCacheService;
 import com.os.bean.vos.OrderVO;

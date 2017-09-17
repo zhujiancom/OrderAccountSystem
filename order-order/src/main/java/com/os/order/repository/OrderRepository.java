@@ -1,6 +1,6 @@
 package com.os.order.repository;
 
-import com.os.order.beans.entities.OrderEntity;
+import com.os.beans.entities.OrderEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

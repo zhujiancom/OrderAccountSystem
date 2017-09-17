@@ -17,13 +17,14 @@
     </style>
 </head>
 <body>
-<div th:include="fragments/header::nav"></div>
+<div th:replace="fragments/header::header"></div>
 
 <div class="container">
-    <div class="starter-template">
+    <div class="row">
         <p th:if="${param.logout}" class="bg-warning">已经成功注销</p>
         <p th:if="${param.error}" class="bg-danger">有错误，请重试</p>
-        <h2>使用账号密码登录</h2>
+        <div class="col-md-4">
+            <h2>使用账号密码登录</h2>
             <form th:action="@{/login}" method="post" action="/login">
                 <div class="form-group">
                     <label for="username">账号 ：</label>
@@ -33,9 +34,11 @@
                     <label for="password">密码 ：</label>
                     <input type="password" id="password" class="form-control" name="password" placeholder="密码"/>
                 </div>
-                <input type="submit" th:value="登录"/>
-                <input type="button" th:onclick="@{/logout}" th:value="退出"/>
+                <input type="submit" class="btn btn-primary" th:value="登录"/>
+                <input type="submit" class="btn btn-default" th:value="注册"/>
+                <input type="button" class="btn btn-default" th:onclick="@{/logout}" th:value="退出"/>
             </form>
+        </div>
     </div>
 </div>
 

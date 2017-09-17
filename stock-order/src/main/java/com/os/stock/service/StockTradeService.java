@@ -1,6 +1,6 @@
 package com.os.stock.service;
 
-import com.os.stock.beans.entity.StockTradeItemEntity;
+import com.os.beans.entities.StockTradeItemEntity;
 
 import java.util.List;
 

@@ -17,18 +17,7 @@
     </style>
 </head>
 <body>
-<nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="#">Spring Security Demo</a>
-        </div>
-        <div id="navbar" class="collapse navbar-collapse">
-            <ul class="nav navbar-nav">
-                <li><a th:href="@{/}">HomePage</a></li>
-            </ul>
-        </div>
-    </div>
-</nav>
+<div th:replace="fragments/header::header"></div>
 
 <div class="container">
     <h1>Welcome Spring boot</h1>

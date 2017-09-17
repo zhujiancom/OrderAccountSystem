@@ -1,9 +1,6 @@
-package com.os.order.beans.entities;
+package com.os.beans.entities;
 
-import com.os.beans.entities.BaseEntity;
 import lombok.Data;
-import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.apache.commons.lang3.builder.ToStringStyle;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;

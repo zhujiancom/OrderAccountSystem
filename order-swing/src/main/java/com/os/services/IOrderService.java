@@ -1,7 +1,7 @@
 package com.os.services;
 
 import com.os.modelview.OrderPage;
-import com.os.order.beans.entities.OrderEntity;
+import com.os.beans.entities.OrderEntity;
 
 /**
  * Created by jian zhu on 05/31/2017.

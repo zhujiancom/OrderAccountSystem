@@ -1,6 +1,6 @@
 package com.os.privilege.service;
 
-import com.os.privilege.beans.entity.SysUser;
+import com.os.beans.entities.SysUser;
 import com.os.privilege.repository.SysUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;

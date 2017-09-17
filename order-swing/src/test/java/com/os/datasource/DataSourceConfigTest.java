@@ -1,6 +1,6 @@
 package com.os.datasource;
 
-import com.os.order.beans.entities.DishEntity;
+import com.os.beans.entities.DishEntity;
 import com.os.order.repository.DishRepository;
 import org.junit.Assert;
 import org.junit.Test;
@@ -13,7 +13,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.math.BigDecimal;
-import java.util.concurrent.TimeUnit;
 
 /**
  * Created by jian zhu on 06/01/2017.

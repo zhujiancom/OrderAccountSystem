@@ -1,7 +1,7 @@
 package com.os.services.cache;
 
 import com.os.modelview.OrderPage;
-import com.os.order.beans.entities.OrderEntity;
+import com.os.beans.entities.OrderEntity;
 import com.os.utils.DateUtil;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;

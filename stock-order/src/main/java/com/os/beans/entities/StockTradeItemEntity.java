@@ -1,4 +1,4 @@
-package com.os.stock.beans.entity;
+package com.os.beans.entities;
 
 import com.os.stock.contants.TradeType;
 import lombok.Data;

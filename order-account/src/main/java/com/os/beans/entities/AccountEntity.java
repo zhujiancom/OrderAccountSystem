@@ -1,7 +1,13 @@
 package com.os.beans.entities;
 
+import lombok.Data;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import java.math.BigDecimal;
@@ -11,6 +17,7 @@ import java.math.BigDecimal;
  */
 @Entity
 @Table(name="BUS_TB_ACCOUNT")
+@Data
 public class AccountEntity extends BaseEntity{
     /* 账户编号 */
     @Column(name="ACC_NO")
@@ -21,7 +28,8 @@ public class AccountEntity extends BaseEntity{
     private String accName;
 
     /*账户类型： 现金账户，金融账户，虚拟账户，负债账户，债权账户，投资账户*/
-    @OneToOne(mappedBy = "account")
+    @ManyToOne(cascade = CascadeType.ALL,fetch= FetchType.EAGER)
+    @JoinColumn(name = "ACC_TYPE_ID")
     private AccountTypeEntity accType;
 
     /*币种*/
@@ -43,67 +51,4 @@ public class AccountEntity extends BaseEntity{
     @Column(name="DESCRIPTION")
     private String description;
 
-    public String getAccNo() {
-        return accNo;
-    }
-
-    public void setAccNo(String accNo) {
-        this.accNo = accNo;
-    }
-
-    public String getAccName() {
-        return accName;
-    }
-
-    public void setAccName(String accName) {
-        this.accName = accName;
-    }
-
-    public AccountTypeEntity getAccType() {
-        return accType;
-    }
-
-    public void setAccType(AccountTypeEntity accType) {
-        this.accType = accType;
-    }
-
-    public String getCurrency() {
-        return currency;
-    }
-
-    public void setCurrency(String currency) {
-        this.currency = currency;
-    }
-
-    public BigDecimal getEarningAmount() {
-        return earningAmount;
-    }
-
-    public void setEarningAmount(BigDecimal earningAmount) {
-        this.earningAmount = earningAmount;
-    }
-
-    public BigDecimal getExpenseAmount() {
-        return expenseAmount;
-    }
-
-    public void setExpenseAmount(BigDecimal expenseAmount) {
-        this.expenseAmount = expenseAmount;
-    }
-
-    public BigDecimal getBalance() {
-        return balance;
-    }
-
-    public void setBalance(BigDecimal balance) {
-        this.balance = balance;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
 }

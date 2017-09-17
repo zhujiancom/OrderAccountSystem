@@ -51,7 +51,7 @@ public class PrimaryJPAConfiguration {
     public LocalContainerEntityManagerFactoryBean entityManagerFactoryPrimary(EntityManagerFactoryBuilder builder){
         return builder.dataSource(primaryDataSource)
                 .properties(getVendorProperties(primaryDataSource))
-                .packages("com.os.order.beans.entities","com.os.stock.beans.entity","com.os.privilege.beans.entity")
+                .packages("com.os.beans.entities")
                 .persistenceUnit("primaryPersistenceUnit")
                 .build();
     }

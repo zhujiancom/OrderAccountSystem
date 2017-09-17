@@ -1,6 +1,6 @@
 package com.os.order.repository;
 
-import com.os.order.beans.entities.DishEntity;
+import com.os.beans.entities.DishEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

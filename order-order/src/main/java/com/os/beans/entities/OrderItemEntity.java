@@ -1,6 +1,5 @@
-package com.os.order.beans.entities;
+package com.os.beans.entities;
 
-import com.os.beans.entities.BaseEntity;
 import lombok.Data;
 
 import javax.persistence.CascadeType;

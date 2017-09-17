@@ -28,3 +28,13 @@ insert into sys_role(id,name) values (2,'role_user');
 
 insert into sys_user_roles(sys_user_id,roles_id) values(1,1);
 insert into sys_user_roles(sys_user_id,roles_id) values(2,2);
+
+create table bus_tb_account_type(
+  id bigint not null,
+  acc_type_name varchar(255),
+  version int,
+  constraint account_type_pk primary key (id)
+);
+
+insert into bus_tb_account_type(id,acc_type_name,version) values (1,'Cash Account',0);
+insert into bus_tb_account_type(id,acc_type_name,version) values (2,'Virtual Account',0);

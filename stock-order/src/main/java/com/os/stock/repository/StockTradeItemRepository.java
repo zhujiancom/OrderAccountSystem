@@ -1,8 +1,7 @@
 package com.os.stock.repository;
 
-import com.os.stock.beans.entity.StockTradeItemEntity;
+import com.os.beans.entities.StockTradeItemEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 @Transactional

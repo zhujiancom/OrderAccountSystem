@@ -1,6 +1,5 @@
-package com.os.order.beans.entities;
+package com.os.beans.entities;
 
-import com.os.beans.entities.AccessoryEntity;
 import com.os.enums.CommonEnums;
 import lombok.Data;
 

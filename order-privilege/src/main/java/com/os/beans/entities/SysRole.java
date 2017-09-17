@@ -1,4 +1,4 @@
-package com.os.privilege.beans.entity;
+package com.os.beans.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

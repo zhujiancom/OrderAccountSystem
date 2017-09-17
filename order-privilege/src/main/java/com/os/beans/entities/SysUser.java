@@ -1,4 +1,4 @@
-package com.os.privilege.beans.entity;
+package com.os.beans.entities;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

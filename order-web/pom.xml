@@ -137,7 +137,7 @@
 
         <dependency>
             <groupId>com.os</groupId>
-            <artifactId>stock-order</artifactId>
+            <artifactId>order-account</artifactId>
             <version>${project.version}</version>
         </dependency>
 
