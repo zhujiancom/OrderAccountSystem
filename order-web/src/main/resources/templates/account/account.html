@@ -2,15 +2,32 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link rel="icon" th:href="@{/favicon.ico}"/>
     <link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
     <link th:href="@{/bootstrap/css/bootstrap-theme.css}" rel="stylesheet"/>
+    <style>
+        .right-panel{
+            border-style:solid;
+            border-width: thin;
+            border-color: transparent;
+            width:100px;
+            height:100px;
+        }
+    </style>
 </head>
 <body>
     <div th:replace="fragments/header::header"></div>
-    <div class="container">
-        <div class="left-panel">
-            <ul></ul>
+    <div class="row">
+    <div class="col-md-3">
+        <div class="list-group" style="margin-top:100px;">
+            <button type="button" class="list-group-item" th:each="accountType:${accountTypes}">
+                <span th:text="${accountType.accTypeName}"></span>
+            </button>
+        </div>
+    </div>
+        <div class="col-md-9 right-panel" style="margin-top:100px;">
+            <button type="button" class="btn btn-default">Add new Account</button>
         </div>
     </div>
 </body>

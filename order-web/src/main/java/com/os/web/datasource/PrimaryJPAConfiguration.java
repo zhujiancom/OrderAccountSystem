@@ -30,7 +30,10 @@ import java.util.Map;
 @EnableJpaRepositories(
         entityManagerFactoryRef = "entityManagerFactoryPrimary",
         transactionManagerRef = "transactionManagerPrimary",
-        basePackages = {"com.os.order.repository","com.os.stock.repository","com.os.privilege.repository"}
+        basePackages = {"com.os.order.repository",
+                "com.os.stock.repository",
+                "com.os.privilege.repository",
+                "com.os.account.repository"}
 )
 @Import({DevDataSourceConfig.class})
 public class PrimaryJPAConfiguration {

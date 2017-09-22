@@ -16,10 +16,15 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.csrf().requireCsrfProtectionMatcher(new AntPathRequestMatcher("**/login"))
-                .and().authorizeRequests().antMatchers("/dashboard").hasRole("role_user")
-                .and().formLogin().loginPage("/login").failureUrl("/login?error").defaultSuccessUrl("/")
-                .and().logout().permitAll();
+//        http.csrf().requireCsrfProtectionMatcher(new AntPathRequestMatcher("**/login"))
+//                .and().authorizeRequests().antMatchers("/acc").hasRole("ROLE_role_user")
+//                .and().authorizeRequests().antMatchers("/charge").hasRole("user")
+//                .and().formLogin().loginPage("/login").failureUrl("/login?error").defaultSuccessUrl("/")
+//                .and().logout().permitAll();
+        http.authorizeRequests().antMatchers("/acc/**").hasAnyAuthority("role_admin", "role_user")
+                .and().authorizeRequests().antMatchers("/charge/**").hasAnyAuthority("role_admin", "role_user")
+                .and().formLogin().loginPage("/login").defaultSuccessUrl("/").failureUrl("/login?error").permitAll()
+                .and().logout().logoutSuccessUrl("/").permitAll();
     }
 
     @Override
@@ -42,4 +47,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     UserDetailsService customUserService(){
         return new CustomUserDetailsService();
     }
+
+
 }
