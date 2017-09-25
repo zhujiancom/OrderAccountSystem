@@ -7,28 +7,113 @@
     <link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
     <link th:href="@{/bootstrap/css/bootstrap-theme.css}" rel="stylesheet"/>
     <style>
-        .right-panel{
-            border-style:solid;
-            border-width: thin;
-            border-color: transparent;
-            width:100px;
-            height:100px;
+        body {
+            padding: 0 100px 0 100px;
         }
+
+        .list-group-item:first-child {
+            z-index: 2;
+            color: #fff;
+            background-color: #337ab7;
+            border-color: #337ab7;
+        }
+        /*button[class="list-group-item"]:hover{*/
+            /*background-color: black;*/
+        /*}*/
+
+        /*button[class="list-group-item"]:active{*/
+            /*background-color: yellow;*/
+        /*}*/
+
     </style>
 </head>
 <body>
-    <div th:replace="fragments/header::header"></div>
-    <div class="row">
-    <div class="col-md-3">
-        <div class="list-group" style="margin-top:100px;">
+<div th:replace="fragments/header::header"></div>
+<div class="row">
+    <div class="col-md-2">
+        <div class="list-group">
             <button type="button" class="list-group-item" th:each="accountType:${accountTypes}">
                 <span th:text="${accountType.accTypeName}"></span>
             </button>
         </div>
     </div>
-        <div class="col-md-9 right-panel" style="margin-top:100px;">
-            <button type="button" class="btn btn-default">Add new Account</button>
+    <div class="col-md-9">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-md-offset-9">
+                    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#accountModal" id="addNewAccount">Add new Account</button>
+                </div>
+            </div>
+            <div class="row" style="background-color: yellow;">
+                <div class="row" th:each="account:${accounts}">
+                    <div class="row">
+                        <div class="col-md-2"><span th:text="${account.accName}"></span></div>
+                        <div class="col-md-2 col-md-offset-10"><span th:text="${account.balance}"></span></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <table class="table-striped">
+                                <thead>
+                                    <tr>
+                                        <td>Date/Time</td>
+                                        <td>Type</td>
+                                        <td>Amount</td>
+                                        <td>Remark</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr th:each="flow:${account.flows}">
+                                        <td><span th:text="${flow.time}"></span></td>
+                                        <td><span th:text="${flow.type}"></span></td>
+                                        <td><span th:text="${flow.amount}"></span></td>
+                                        <td><span th:text="${flow.remark}"></span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+</div>
+<div class="modal fade" id="accountModal" tabindex="-1" role="dialog" aria-labelledby="accountModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="accountModalLabel">Add New Account</h4>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="accountName" class="control-label">Account Name:</label>
+                        <input type="text" class="form-control" id="accountName"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="accountType" class="control-label">Account Type:</label>
+                        <input type="text" class="form-control" id="accountType"/>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Add</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script th:src="@{/jquery-1.12.4.min.js}" type="text/javascript"></script>
+<script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+<script th:type="javascript">
+    $("#addNewAccount").modal({
+
+    });
+    $("button[class='list-group-item']").each().click(function(item,event){
+        console.log("click : "+$(this));
+        $(this).addClass("active");
+        $(this).siblings().removeClass("active");
+    });
+</script>
 </body>
 </html>
