@@ -27,8 +27,31 @@
             </li>
         </ul>
         <div id="tab-content" class="tab-content">
-            <div th:each="accountType:${accountTypes}" role="tabpanel" class="tab-pane" th:id="${accountType.id}">
-                <span th:text="${accountType.accTypeName}"></span>
+            <div role="tabpanel" class="tab-pane active" th:id="${accountTypes[0].id}">
+                <button type="button" class="btn btn-default" data-target="#myModal" data-toggle="modal" style="margin-top:50px;">Create New Account</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">x</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">Create New Account</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="accountName">Account Name ：</label>
+                        <input type="text" name="accountName" class="form-control" placeholder="Name" id="accountName"/>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="submit" class="btn btn-primary" th:value="Create" id="createNewAccount"/>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
             </div>
         </div>
     </div>
@@ -38,11 +61,31 @@
     <script th:src="@{/datepicker/js/bootstrap-datetimepicker.min.js}"></script>
     <script th:inline="javascript">
         $("#accountTabs li:first").addClass("active");
-        $("#tab-content div:first").addClass("active");
         $('#accountTabs a').click(function (e) {
             e.preventDefault();
             $(this).tab('show');
-        })
+        });
+
+        $("#createNewAccount").click(function(){
+            var accName = $("#accountName").val();
+            var typeId = $(".tab-content>div:first").attr("id");
+            console.log("accName is "+accName+" , typeId is "+typeId);
+            var token = $("meta[name='_csrf']").attr("content");
+            var header = $("meta[name='_csrf_header']").attr("content");
+            $.post({
+                beforeSend:function (xhr) {
+                    if(header &amp;&amp; token){
+                        xhr.setRequestHeader(header,token)
+                    }
+                },
+                url:"rest/acc/add/"+typeId+"/"+accName,
+                dataType:"json",
+                success:function(data){
+                    console.log(data);
+                }
+            });
+        });
+
     </script>
 </body>
 </html>
