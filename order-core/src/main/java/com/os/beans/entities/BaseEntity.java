@@ -1,5 +1,7 @@
 package com.os.beans.entities;
 
+import lombok.Data;
+
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,6 +11,7 @@ import javax.persistence.Version;
 import java.io.Serializable;
 
 @MappedSuperclass
+@Data
 public abstract class BaseEntity implements Serializable, Cloneable{
 
 	/**
