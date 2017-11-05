@@ -6,6 +6,8 @@
     <link rel="icon" th:href="@{/favicon.ico}"/>
     <link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
     <link th:href="@{/bootstrap/css/bootstrap-theme.css}" rel="stylesheet"/>
+    <meta name="_csrf" th:content="${_csrf.token}"/>
+    <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
     <style>
         .right-panel{
             border-style:solid;
@@ -27,6 +29,7 @@
             </li>
         </ul>
         <div id="tab-content" class="tab-content">
+            <input type="text" th:value="${_csrf.token}"/>
             <div role="tabpanel" class="tab-pane active" th:id="${accountTypes[0].id}">
                 <button type="button" class="btn btn-default" data-target="#myModal" data-toggle="modal" style="margin-top:50px;">Create New Account</button>
             </div>
@@ -60,6 +63,7 @@
     <script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
     <script th:src="@{/datepicker/js/bootstrap-datetimepicker.min.js}"></script>
     <script th:inline="javascript">
+        //<![CDATA[
         $("#accountTabs li:first").addClass("active");
         $('#accountTabs a').click(function (e) {
             e.preventDefault();
@@ -72,20 +76,23 @@
             console.log("accName is "+accName+" , typeId is "+typeId);
             var token = $("meta[name='_csrf']").attr("content");
             var header = $("meta[name='_csrf_header']").attr("content");
+            console.log("token : "+token+", header : "+header);
             $.post({
                 beforeSend:function (xhr) {
-                    if(header &amp;&amp; token){
+                    if(header && token){
                         xhr.setRequestHeader(header,token)
+
                     }
                 },
                 url:"rest/acc/add/"+typeId+"/"+accName,
                 dataType:"json",
+                contentType:'application/json',
                 success:function(data){
                     console.log(data);
                 }
             });
         });
-
+        //]]>
     </script>
 </body>
 </html>
