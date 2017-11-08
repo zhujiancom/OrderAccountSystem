@@ -8,6 +8,8 @@ import java.util.List;
 
 @Data
 public class AccountVo {
+    private Long typeId;
+
     private String accNo;
 
     private String name;

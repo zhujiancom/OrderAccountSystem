@@ -74,6 +74,7 @@
             var accName = $("#accountName").val();
             var typeId = $(".tab-content>div:first").attr("id");
             console.log("accName is "+accName+" , typeId is "+typeId);
+            var params = {"typeId":typeId,"name":accName};
             var token = $("meta[name='_csrf']").attr("content");
             var header = $("meta[name='_csrf_header']").attr("content");
             console.log("token : "+token+", header : "+header);
@@ -81,12 +82,12 @@
                 beforeSend:function (xhr) {
                     if(header && token){
                         xhr.setRequestHeader(header,token)
-
                     }
                 },
-                url:"rest/acc/add/"+typeId+"/"+accName,
+                url:"acc/add/",
                 dataType:"json",
                 contentType:'application/json',
+                data:JSON.stringify(params),
                 success:function(data){
                     console.log(data);
                 }

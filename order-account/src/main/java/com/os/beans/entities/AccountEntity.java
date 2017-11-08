@@ -1,6 +1,9 @@
 package com.os.beans.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -17,7 +20,7 @@ import java.math.BigDecimal;
  */
 @Entity
 @Table(name="BUS_TB_ACCOUNT")
-@Data
+@Getter @Setter
 public class AccountEntity extends BaseEntity{
     /* 账户编号 */
     @Column(name="ACC_NO")
@@ -30,6 +33,7 @@ public class AccountEntity extends BaseEntity{
     /*账户类型： 现金账户，金融账户，虚拟账户，负债账户，债权账户，投资账户*/
     @ManyToOne(cascade = CascadeType.ALL,fetch= FetchType.EAGER)
     @JoinColumn(name = "ACC_TYPE_ID")
+    @JsonIgnore
     private AccountTypeEntity accType;
 
     /*币种*/

@@ -1,5 +1,6 @@
 package com.os.beans.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.Column;
@@ -19,5 +20,6 @@ public class AccountTypeEntity extends BaseEntity {
     private String accTypeName;
 
     @OneToMany(mappedBy = "accType")
+    @JsonIgnore
     private List<AccountEntity> accounts;
 }

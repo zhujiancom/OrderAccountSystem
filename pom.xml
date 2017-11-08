@@ -25,7 +25,7 @@
         <spring.version>4.3.4.RELEASE</spring.version>
         <hibernate.version>5.3.5.Final</hibernate.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <jackson.version>1.9.9</jackson.version>
+        <jackson.version>2.9.2</jackson.version>
         <release-train>Hopper-SR6</release-train>
         <derby.version>10.12.1.1</derby.version>
         <dozer.version>5.5.1</dozer.version>
@@ -292,23 +292,36 @@
             </dependency>
 
             <!-- Jackson -->
-            <dependency>
-                <groupId>org.codehaus.jackson</groupId>
-                <artifactId>jackson-mapper-asl</artifactId>
-                <version>${jackson.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.codehaus.jackson</groupId>
-                <artifactId>jackson-core-asl</artifactId>
-                <version>${jackson.version}</version>
-            </dependency>
+            <!--<dependency>-->
+                <!--<groupId>org.codehaus.jackson</groupId>-->
+                <!--<artifactId>jackson-mapper-asl</artifactId>-->
+                <!--<version>${jackson.version}</version>-->
+            <!--</dependency>-->
 
             <!--<dependency>-->
-                <!--<groupId>com.fasterxml.jackson.core</groupId>-->
-                <!--<artifactId>jackson-databind</artifactId>-->
-                <!--<version>2.9.2</version>-->
+                <!--<groupId>org.codehaus.jackson</groupId>-->
+                <!--<artifactId>jackson-core-asl</artifactId>-->
+                <!--<version>${jackson.version}</version>-->
             <!--</dependency>-->
+
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-annotations</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-core</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+
 
             <dependency>
                 <groupId>javax.servlet</groupId>
