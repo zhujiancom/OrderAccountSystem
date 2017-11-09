@@ -1,5 +1,6 @@
 package com.os.beans.vos;
 
+import com.os.account.constant.Currency;
 import com.os.beans.entities.TradeFlow;
 import lombok.Data;
 
@@ -8,13 +9,15 @@ import java.util.List;
 
 @Data
 public class AccountVo {
+    private Long accId;
+
     private Long typeId;
 
     private String accNo;
 
     private String name;
 
-    private String currency;
+    private Currency currency;
 
     private BigDecimal earningAmount;
 

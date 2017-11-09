@@ -11,9 +11,11 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import java.math.BigDecimal;
+import java.util.List;
 
 /**
  * Created by jian zhu on 05/31/2017.
@@ -54,5 +56,8 @@ public class AccountEntity extends BaseEntity{
 
     @Column(name="DESCRIPTION")
     private String description;
+
+    @OneToMany(mappedBy = "account")
+    private List<TradeFlow> tradeFlows;
 
 }

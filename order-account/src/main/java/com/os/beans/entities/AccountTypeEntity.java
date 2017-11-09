@@ -5,6 +5,7 @@ import lombok.Data;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.util.List;
@@ -19,7 +20,7 @@ public class AccountTypeEntity extends BaseEntity {
     @Column(name = "ACC_TYPE_NAME")
     private String accTypeName;
 
-    @OneToMany(mappedBy = "accType")
+    @OneToMany(mappedBy = "accType",fetch = FetchType.EAGER)
     @JsonIgnore
     private List<AccountEntity> accounts;
 }
