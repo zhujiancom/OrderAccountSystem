@@ -17,6 +17,24 @@
         <start-class>com.os.AppEntry</start-class>
     </properties>
 
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <properties>
+                <root-level>trace</root-level>
+            </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+        <profile>
+            <id>prod</id>
+            <properties>
+                <root-level>warn</root-level>
+            </properties>
+        </profile>
+    </profiles>
+
     <build>
         <resources>
             <resource>
